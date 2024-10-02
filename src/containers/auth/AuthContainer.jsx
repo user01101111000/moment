@@ -2,6 +2,9 @@ import "./AuthContainer.css";
 import Login from "../../components/auth/Login/Login";
 import Register from "../../components/auth/Register/Register";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AuthContainer = () => {
   const [showLogin, setShowLogin] = useState(true);
@@ -9,10 +12,16 @@ const AuthContainer = () => {
   return (
     <section className="auth_container">
       <article className="auth_box">
-        {/* <h1 className="auth_title">MOMENT</h1> */}
-
-        {showLogin ? <Login setShowLogin={setShowLogin} /> : <Register />}
+        <AnimatePresence>
+          {showLogin ? (
+            <Login setShowLogin={setShowLogin} />
+          ) : (
+            <Register setShowLogin={setShowLogin} />
+          )}
+        </AnimatePresence>
       </article>
+
+      <ToastContainer />
     </section>
   );
 };

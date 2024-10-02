@@ -7,6 +7,12 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.Toastify__toast-body {
+  font-family: "Geist", sans-serif;
+  font-weight: 700;
+}
+
 @media screen and (max-width: 1440px) {
   html {
     font-size: 16px !important;

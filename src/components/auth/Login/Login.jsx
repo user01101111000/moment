@@ -5,8 +5,13 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import { loginSchema } from "../../../utils/schema";
+import { motion } from "framer-motion";
+import useLoginMutation from "../../../hooks/api/useLoginMutation";
+import { toast, Bounce } from "react-toastify";
 
 const Login = ({ setShowLogin }) => {
+  const { mutateAsync } = useLoginMutation();
+
   const {
     values,
     handleChange,
@@ -25,15 +30,34 @@ const Login = ({ setShowLogin }) => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  function onSubmit(values) {
-    setTimeout(() => {
-      console.log(values);
+  async function onSubmit(values) {
+    try {
+      await mutateAsync(values);
       resetForm();
-    }, 2000);
+    } catch (e) {
+      toast.error("Account not found", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+      resetForm();
+      console.log(e.message);
+    }
   }
 
   return (
-    <article className="login_box">
+    <motion.article
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0 }}
+      className="login_box"
+    >
       <h1 className="login_label">LOGIN</h1>
       <form className="login_form" onSubmit={handleSubmit}>
         <div className="input_box">
@@ -88,7 +112,7 @@ const Login = ({ setShowLogin }) => {
           {`Don't have an account ? `} <span>Register Now</span>
         </h1>
       </form>
-    </article>
+    </motion.article>
   );
 };
 
