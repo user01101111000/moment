@@ -1,0 +1,115 @@
+.login_box {
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  gap: 3rem;
+  background-color: #181818;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.input_box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.login_label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1rem;
+  text-align: center;
+  user-select: none;
+}
+
+.input_box label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.input_box input {
+  width: 100%;
+  background-color: #181818;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+}
+
+.input_box input:focus {
+  outline: none;
+}
+
+.login_form button {
+  background-color: white;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #181818;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login_form button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.submitting {
+  pointer-events: none !important;
+  user-select: none !important;
+  opacity: 0.5 !important;
+}
+
+.register_link_text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+.register_link_text span {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.custom_input_box {
+  width: 100%;
+  position: relative;
+}
+.password_icon {
+  position: absolute;
+  top: 50%;
+  right: 3%;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  user-select: none;
+}
+
+.login_error{
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 400px) {
+  .login_box {
+    width: 100%;
+  }
+}
