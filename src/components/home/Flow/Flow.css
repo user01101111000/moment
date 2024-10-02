@@ -1,0 +1,53 @@
+.flow {
+  min-height: calc(100vh - 2rem);
+  background-color: #181818;
+  width: 42rem;
+  padding-block: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  gap: 1rem;
+  border-radius: 20px;
+}
+.flow_title {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.made_by {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.divider {
+  display: block;
+  width: 100%;
+  height: 0.2px;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.made_by a {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+}
+
+@media screen and (max-width: 850px) {
+  .flow {
+    width: 60rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .flow {
+    width: 100%;
+    border-radius: 0;
+    min-height: 100vh;
+  }
+}

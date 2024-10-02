@@ -1,0 +1,11 @@
+.post_detail {
+  background-color: #09090b;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  color: white;
+  padding: 1rem;
+}

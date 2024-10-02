@@ -1,0 +1,104 @@
+.add_post_box {
+  width: 30rem;
+  background-color: #181818;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.add_post_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.post_input_box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.post_input_box label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.post_input_box input {
+  background-color: #181818;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+}
+
+.post_input_box textarea {
+  background-color: #181818;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+}
+
+.post_input_box input:focus,
+.post_input_box textarea:focus {
+  outline: none;
+}
+
+.post_input_box input::placeholder,
+.post_input_box textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+
+  font-size: 0.8rem;
+
+  font-weight: 300;
+}
+
+.add_post_form button {
+  background-color: white;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #181818;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submitting {
+  pointer-events: none !important;
+  user-select: none !important;
+  opacity: 0.5 !important;
+}
+
+.add_post_form button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#content {
+  resize: none;
+}
+.close_icon_area {
+  width: 100%;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.close_icon_area .close_icon {
+  cursor: pointer;
+}
+
+.error_message_add_post {
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 700;
+}

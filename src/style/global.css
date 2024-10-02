@@ -1,0 +1,50 @@
+@import url("./fonts.css");
+
+:root {
+  font-family: "Geist", sans-serif;
+  color: white;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+@media screen and (max-width: 1440px) {
+  html {
+    font-size: 16px !important;
+  }
+}
+
+@media screen and (max-width: 1340px) {
+  html {
+    font-size: 15px !important;
+  }
+}
+
+@media screen and (max-width: 1340px) {
+  html {
+    font-size: 14px !important;
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  html {
+    font-size: 13px !important;
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  html {
+    font-size: 12px !important;
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  html {
+    font-size: 11px !important;
+  }
+}
+
+@media screen and (max-width: 940px) {
+  html {
+    font-size: 10px !important;
+  }
+}

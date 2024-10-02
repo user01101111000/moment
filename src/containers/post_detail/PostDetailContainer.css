@@ -1,0 +1,32 @@
+.flow_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 2rem;
+  width: 100%;
+}
+.back_icon {
+  cursor: pointer;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.detail_flow {
+  background-color: #181818;
+  width: 42rem;
+  min-height: calc(100vh - 2rem);
+  padding-block: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  gap: 1rem;
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .detail_flow {
+    width: 100%;
+  }
+}

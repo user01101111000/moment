@@ -1,0 +1,83 @@
+.post {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+  width: 100%;
+}
+
+.avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.post_main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.post_buttons {
+  display: flex;
+  gap: 1.1rem;
+  width: 100%;
+  justify-content: start;
+  align-items: center;
+}
+.post_button_icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.name_area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.likes {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  height: 100%;
+  gap: 0.4rem;
+}
+.comments {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  height: 100%;
+  gap: 0.4rem;
+}
+.comments_count {
+  user-select: none;
+  font-size: 0.8rem;
+}
+.likes_count {
+  user-select: none;
+  font-size: 0.8rem;
+}
+.username {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.post_content {
+  font-size: 0.9rem;
+  font-weight: 400;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.post_time {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+}
+.name_divider {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+}
