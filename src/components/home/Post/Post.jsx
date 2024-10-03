@@ -3,15 +3,21 @@ import "./Post.css";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
+import pp from "../../../assets/images/pp.png";
 import timeConverter from "../../../utils/timeConverter";
 import { PiTelegramLogo } from "react-icons/pi";
+import { FaLink } from "react-icons/fa6";
+
 import { throttle } from "lodash";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import useAddPostLikeMutation from "../../../hooks/api/useAddPostLikeMutation";
+import { motion } from "framer-motion";
 
 const Post = ({ post }) => {
+  const [showShareMenu, setShowShareMenu] = useState(false);
   const { mutateAsync } = useAddPostLikeMutation();
   const navigate = useNavigate();
+  const location = useLocation();
   const [liked, setLiked] = useState(false);
 
   const [likeCount, setLikeCount] = useState(+post.likeCount.stringValue);
@@ -28,7 +34,9 @@ const Post = ({ post }) => {
 
   return (
     <div className="post">
-      <div className="avatar"></div>
+      <figure className="avatar">
+        <img src={pp} alt="pp" />
+      </figure>
       <div className="post_main">
         <div className="name_area">
           <h3 className="username">{post.username.stringValue}</h3>
@@ -75,7 +83,33 @@ const Post = ({ post }) => {
             {/* <p className="comments_count">{post.commentCount.stringValue}</p> */}
           </div>
 
-          <PiTelegramLogo className="post_button_icon" />
+          <div className="share_label">
+            <PiTelegramLogo
+              className="post_button_icon"
+              onClick={() => setShowShareMenu((prev) => !prev)}
+            />
+
+            {showShareMenu && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="share_menu"
+              >
+                <div
+                  className="share_choice"
+                  onClick={() => {
+                    setShowShareMenu(false);
+                    navigator.clipboard.writeText(
+                      `${window.location.href}post/${post.id.stringValue}`
+                    );
+                  }}
+                >
+                  <h1>Copy link</h1>
+                  <FaLink className="post_button_icon" />
+                </div>
+              </motion.div>
+            )}
+          </div>
         </div>
       </div>
     </div>

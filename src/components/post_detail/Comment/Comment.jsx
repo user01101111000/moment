@@ -3,7 +3,7 @@ import "../CurrentPost/CurrentPost.css";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { AiFillDislike } from "react-icons/ai";
-
+import pp from "../../../assets/images/pp.png";
 import timeConverter from "@/utils/timeConverter";
 import { useState } from "react";
 
@@ -13,7 +13,9 @@ const Comment = ({ comment }) => {
 
   return (
     <div className="post">
-      <div className="avatar"></div>
+      <figure className="avatar">
+        <img src={pp} alt="pp" />
+      </figure>
       <div className="post_main">
         <div className="name_area">
           <h3 className="username">{comment.username.stringValue}</h3>

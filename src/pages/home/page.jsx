@@ -6,7 +6,7 @@ import HomeLoading from "../../containers/home/HomeLoading";
 const Home = () => {
   const { data, isLoading, isError, error } = useGetPostsQuery();
 
-  if (isLoading) return <h1>Loading</h1>;
+  if (isLoading) return <HomeLoading />;
 
   if (isError) return <div>Error: {error.message}</div>;
 

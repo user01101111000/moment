@@ -146,7 +146,7 @@ const Register = ({ setShowLogin }) => {
           {errors.password && <p className="login_error">{errors.password}</p>}
         </div>
 
-        <hr className="divider" />
+        <hr className="divider_register" />
 
         <div className="input_box_gender">
           <label className="radio_label">
@@ -172,7 +172,7 @@ const Register = ({ setShowLogin }) => {
           </label>
         </div>
 
-        <hr className="divider" />
+        <hr className="divider_register" />
         <button
           type="submit"
           className={isSubmitting ? "submitting" : ""}

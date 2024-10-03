@@ -28,7 +28,8 @@
 .navigation_bar {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  padding-block: 1rem;
   align-items: center;
   position: fixed;
   height: 100dvh;
@@ -44,9 +45,34 @@
   flex-direction: column;
   gap: 3rem;
 }
-.nav_button {
-  font-size: 2rem;
+.nav_button_icon {
+  font-size: 1.5rem;
   cursor: pointer;
+}
+.nav_button {
+  color: white;
+  opacity: 0.5;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.nav_button:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.349);
+}
+
+.active {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.349);
+}
+
+.add_post_icon {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 @media screen and (max-width: 650px) {
@@ -69,5 +95,8 @@
 
   .nav_buttons {
     flex-direction: row;
+  }
+  .logout_nav_icon {
+    display: none;
   }
 }

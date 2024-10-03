@@ -9,7 +9,12 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
 }
 
 .post_main {
@@ -21,7 +26,7 @@
 
 .post_buttons {
   display: flex;
-  gap: 1.1rem;
+  gap: 1.2rem;
   width: 100%;
   justify-content: start;
   align-items: center;
@@ -29,6 +34,7 @@
 .post_button_icon {
   cursor: pointer;
   font-size: 1.2rem;
+  user-select: none;
 }
 
 .name_area {
@@ -80,4 +86,42 @@
   font-size: 0.8rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.5);
+}
+
+.share_label {
+  position: relative;
+}
+
+.share_menu {
+  position: absolute;
+  bottom: -200%;
+  left: 150%;
+  background-color: #181818;
+  padding: 0.5rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  user-select: none;
+}
+
+.share_choice {
+  border-radius: 10px;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  display: flex;
+  gap: 2rem;
+  cursor: pointer;
+}
+
+.share_menu h1 {
+  color: white;
+  text-wrap: nowrap;
+}
+
+.share_choice:hover {
+  background-color: rgba(255, 255, 255, 0.185);
 }
