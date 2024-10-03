@@ -1,11 +1,15 @@
-.post_detail {
-  background-color: #09090b;
-  min-height: 100vh;
+.home {
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   color: white;
-  padding: 1rem;
+}
+
+@media screen and (max-width: 650px) {
+  .home {
+    height: calc(100% - 5rem);
+  }
 }

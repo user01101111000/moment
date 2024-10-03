@@ -1,4 +1,3 @@
-import "./page.css";
 import HomeContainer from "../../containers/home/HomeContainer";
 import useGetPostsQuery from "../../hooks/api/useGetPostsQuery";
 import timeSorter from "../../utils/timeSorter";
@@ -7,7 +6,7 @@ import HomeLoading from "../../containers/home/HomeLoading";
 const Home = () => {
   const { data, isLoading, isError, error } = useGetPostsQuery();
 
-  if (isLoading) return <HomeLoading />;
+  if (isLoading) return <h1>Loading</h1>;
 
   if (isError) return <div>Error: {error.message}</div>;
 

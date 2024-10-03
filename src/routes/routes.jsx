@@ -1,10 +1,13 @@
-import Home from "@/pages/home/page.jsx";
-import NotFound from "@/pages/not_found/page.jsx";
-import HomeLayout from "@/layout/HomeLayout.jsx";
-import PostDetail from "@/pages/post_detail/page.jsx";
-import Auth from "../pages/auth/page";
 import ProtectedRoute from "../components/helper/ProtectedRoute";
 import { createBrowserRouter } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import SuspenseLoading from "../components/helper/SuspenseLoading";
+
+const HomeLayout = lazy(() => import("../layout/HomeLayout"));
+const Auth = lazy(() => import("../pages/auth/page"));
+const Home = lazy(() => import("../pages/home/page"));
+const PostDetail = lazy(() => import("../pages/post_detail/page"));
+const NotFound = lazy(() => import("../pages/not_found/page"));
 
 const routes = [
   {
@@ -28,7 +31,11 @@ const routes = [
   },
   {
     path: "/auth",
-    element: <Auth />,
+    element: (
+      <Suspense fallback={<SuspenseLoading />}>
+        <Auth />
+      </Suspense>
+    ),
     auth: false,
   },
 ];

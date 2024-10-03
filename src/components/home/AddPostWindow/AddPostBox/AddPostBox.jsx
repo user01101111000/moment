@@ -43,7 +43,7 @@ const AddPostBox = ({
       className="add_post_box"
     >
       <div className="close_icon_area">
-        <h1 className="flow_title">mome</h1>
+        <div></div>
         <IoCloseSharp onClick={() => setAdd(false)} className="close_icon" />
       </div>
 

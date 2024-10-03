@@ -5,8 +5,9 @@ const PostList = ({ posts = [] }) => {
   const postList = posts.map((post) => {
     return (
       <div key={post.id.stringValue} className="post_wrapper">
-        <hr className="divider" />
         <Post post={post} />
+
+        <hr className="divider" />
       </div>
     );
   });

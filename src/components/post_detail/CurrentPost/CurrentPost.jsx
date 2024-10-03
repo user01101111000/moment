@@ -1,5 +1,6 @@
 import timeConverter from "@/utils/timeConverter";
 import "./CurrentPost.css";
+import "../../home/Post/Post.css";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import { PiTelegramLogo } from "react-icons/pi";
