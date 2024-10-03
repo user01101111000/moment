@@ -73,6 +73,7 @@
 
 .add_post_icon {
   background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 650px) {

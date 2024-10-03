@@ -2,32 +2,44 @@ import Skeleton from "../../components/ui/Skeleton/Skeleton";
 import { motion } from "framer-motion";
 import "./HomeLoading.css";
 import "./HomeConatiner.css";
+import { article } from "framer-motion/client";
+import Loading from "../../components/ui/loading";
 
 const HomeLoading = () => {
-  const posts = Array.from({ length: 6 }, (_, i) => (
-    <div className="loading_post" key={i}>
-      <hr className="divider" />
-      <div
-        style={{
-          display: "flex",
-          gap: "1rem",
-        }}
-      >
-        <Skeleton width="20%" height="1rem" borderRadius="4px" />
-        <Skeleton width="80%" height="1rem" borderRadius="4px" />
-      </div>
+  // const posts = Array.from({ length: 5 }, (_, i) => (
+  //   <div className="loading_post" key={i}>
+  //     <hr className="divider" />
+  //     <div
+  //       style={{
+  //         display: "flex",
+  //         gap: "1rem",
+  //       }}
+  //     >
+  //       <Skeleton width="20%" height="1rem" borderRadius="4px" />
+  //       <Skeleton width="80%" height="1rem" borderRadius="4px" />
+  //     </div>
 
-      <Skeleton width="100%" height="6rem" borderRadius="4px" />
-    </div>
-  ));
+  //     <Skeleton width="100%" height="6rem" borderRadius="4px" />
+  //   </div>
+  // ));
+
+  // return (
+  //   <motion.article
+  //     initial={{ opacity: 0 }}
+  //     animate={{ opacity: 1 }}
+  //     className="home"
+  //   >
+  //     <div className="loading_post_list">{posts}</div>
+  //   </motion.article>
+  // );
 
   return (
     <motion.article
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="home"
+      className="home loading_container"
     >
-      <div className="loading_post_list">{posts}</div>
+      <Loading size={"1.3rem"} />
     </motion.article>
   );
 };

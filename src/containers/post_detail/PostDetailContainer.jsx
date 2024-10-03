@@ -10,8 +10,8 @@ const PostDetailContainer = ({ post, comments }) => {
 
   return (
     <motion.article
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0.5 }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="post_detail"
     >

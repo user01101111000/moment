@@ -12,3 +12,9 @@
   width: 100%;
   padding-inline: 1.5rem;
 }
+
+.loading_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

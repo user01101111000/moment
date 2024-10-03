@@ -5,8 +5,8 @@ import "./HomeConatiner.css";
 const HomeContainer = ({ posts }) => {
   return (
     <motion.article
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0.5 }}
+      animate={{ opacity: 1 }}
       className="home"
     >
       <PostList posts={posts} />

@@ -35,11 +35,11 @@ const HomeLayout = () => {
               <HiHome className="nav_button_icon" />
             </NavLink>
 
-            <div className="nav_button add_post_icon">
-              <TiPlus
-                className="nav_button_icon"
-                onClick={() => setAdd((prev) => !prev)}
-              />
+            <div
+              className="nav_button add_post_icon"
+              onClick={() => setAdd((prev) => !prev)}
+            >
+              <TiPlus className="nav_button_icon" />
             </div>
 
             <NavLink to="/profile" className="nav_button">
