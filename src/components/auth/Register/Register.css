@@ -36,6 +36,10 @@
   font-weight: 700;
 }
 
+input[type="radio"] {
+  accent-color: #09090b;
+}
+
 .input_box input {
   width: 100%;
   background-color: #181818;

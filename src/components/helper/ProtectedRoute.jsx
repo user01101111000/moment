@@ -1,5 +1,6 @@
 import useAuth from "../../hooks/common/useAuth";
 import { Navigate } from "react-router-dom";
+import { decryptToken } from "../../utils/cryptoID";
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useAuth();

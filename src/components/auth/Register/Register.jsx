@@ -36,7 +36,7 @@ const Register = ({ setShowLogin }) => {
   async function onSubmit(values) {
     await mutateAsync(values);
     resetForm();
-    toast.success("Account created!!!", {
+    toast.success("Account created.", {
       position: "top-right",
       autoClose: 2000,
       hideProgressBar: false,

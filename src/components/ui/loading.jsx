@@ -1,4 +1,4 @@
-import loa from "../../../public/images/loading.gif";
+import loa from "../../assets/images/loading.gif";
 
 const Loading = ({ size }) => {
   return (
