@@ -2,8 +2,7 @@ import Skeleton from "../../components/ui/Skeleton/Skeleton";
 import { motion } from "framer-motion";
 import "./HomeLoading.css";
 import "./HomeConatiner.css";
-import { article } from "framer-motion/client";
-import Loading from "../../components/ui/loading";
+import Loading from "../../components/ui/Loading";
 
 const HomeLoading = () => {
   // const posts = Array.from({ length: 5 }, (_, i) => (

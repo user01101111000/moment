@@ -13,14 +13,15 @@ import AddPostWindow from "../components/home/AddPostWindow/AddPostWindow";
 import useGetUserInfoMutation from "../hooks/api/useGetUserInfoMutation";
 import isTokenExpired from "../utils/isTokenExpired ";
 import { decryptToken } from "../utils/cryptoID";
+import { useSelector } from "react-redux";
 
 const HomeLayout = () => {
   const navigate = useNavigate();
   const [add, setAdd] = useState(false);
   const { logout } = useAuth();
   const { mutateAsync } = useAddPostMutation();
-
-  const { mutateAsync: getUserInfo } = useGetUserInfoMutation();
+  const { userInfo } = useSelector((state) => state.userInfo);
+  const { mutateAsync: getUserInfo, isPending } = useGetUserInfoMutation();
 
   const valid = isTokenExpired(
     decryptToken(JSON.parse(localStorage.getItem("m_i&r")).m_i)
@@ -37,9 +38,13 @@ const HomeLayout = () => {
   return (
     <main className="home-layout">
       <article className="flow">
-        <Suspense fallback={<SuspenseLoading />}>
-          <Outlet />
-        </Suspense>
+        {!isPending ? (
+          <Suspense fallback={<SuspenseLoading />}>
+            <Outlet />
+          </Suspense>
+        ) : (
+          <h1>Loading</h1>
+        )}
         <div className="navigation_bar">
           <div></div>
           <div className="nav_buttons">
@@ -54,7 +59,7 @@ const HomeLayout = () => {
               <TiPlus className="nav_button_icon" />
             </div>
 
-            <NavLink to={`/@}`} className="nav_button">
+            <NavLink to={`/@${userInfo.username}`} className="nav_button">
               <FaUserLarge className="nav_button_icon" />
             </NavLink>
           </div>
