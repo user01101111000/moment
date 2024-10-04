@@ -42,6 +42,13 @@ const getAxiosRefreshTokenInstance = () =>
     }`,
   });
 
+const getAxiosUserInfoInstance = () =>
+  axios.create({
+    baseURL: `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${
+      import.meta.env.VITE_API_KEY
+    }`,
+  });
+
 export {
   getAxiosInstance,
   getAxiosCommentsInstance,
@@ -49,4 +56,5 @@ export {
   getAxiosAuthRegisterInstance,
   getAxiosAuthLoginInstance,
   getAxiosRefreshTokenInstance,
+  getAxiosUserInfoInstance,
 };

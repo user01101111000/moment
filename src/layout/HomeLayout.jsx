@@ -1,5 +1,5 @@
-import { Outlet, useNavigate, NavLink } from "react-router-dom";
-import { Suspense, useState } from "react";
+import { Outlet, useNavigate, NavLink, useLocation } from "react-router-dom";
+import { Suspense, useEffect, useState } from "react";
 import "./HomeLayout.css";
 import SuspenseLoading from "../components/helper/SuspenseLoading";
 import useAuth from "../hooks/common/useAuth";
@@ -10,17 +10,29 @@ import { TiPlus } from "react-icons/ti";
 import { HiHome } from "react-icons/hi2";
 import useAddPostMutation from "../hooks/api/useAddPostMutation";
 import AddPostWindow from "../components/home/AddPostWindow/AddPostWindow";
+import useGetUserInfoMutation from "../hooks/api/useGetUserInfoMutation";
+import isTokenExpired from "../utils/isTokenExpired ";
+import { decryptToken } from "../utils/cryptoID";
 
 const HomeLayout = () => {
+  const navigate = useNavigate();
+  const [add, setAdd] = useState(false);
   const { logout } = useAuth();
   const { mutateAsync } = useAddPostMutation();
+
+  const { mutateAsync: getUserInfo } = useGetUserInfoMutation();
+
+  const valid = isTokenExpired(
+    decryptToken(JSON.parse(localStorage.getItem("m_i&r")).m_i)
+  );
+
+  useEffect(() => {
+    getUserInfo();
+  }, [valid]);
 
   async function callback(values) {
     await mutateAsync(values);
   }
-
-  const navigate = useNavigate();
-  const [add, setAdd] = useState(false);
 
   return (
     <main className="home-layout">
@@ -42,7 +54,7 @@ const HomeLayout = () => {
               <TiPlus className="nav_button_icon" />
             </div>
 
-            <NavLink to="/profile" className="nav_button">
+            <NavLink to={`/@}`} className="nav_button">
               <FaUserLarge className="nav_button_icon" />
             </NavLink>
           </div>
