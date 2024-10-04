@@ -10,6 +10,7 @@
   height: 3rem;
   border-radius: 50%;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .avatar img {
@@ -68,6 +69,7 @@
 .username {
   font-size: 1rem;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .post_content {
@@ -94,10 +96,10 @@
 
 .share_menu {
   position: absolute;
-  bottom: -200%;
+  bottom: -80%;
   left: 150%;
   background-color: #181818;
-  padding: 0.5rem;
+  padding: 0.4rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -110,9 +112,11 @@
 
 .share_choice {
   border-radius: 10px;
-  font-size: 1.1rem;
-  padding: 0.5rem;
+  font-size: 1rem;
+  padding: 0.4rem;
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 2rem;
   cursor: pointer;
 }

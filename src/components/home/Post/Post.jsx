@@ -34,12 +34,24 @@ const Post = ({ post }) => {
 
   return (
     <div className="post">
-      <figure className="avatar">
+      <figure
+        className="avatar"
+        onClick={() => {
+          navigate(`/@${post.userName.stringValue}`);
+        }}
+      >
         <img src={pp} alt="pp" />
       </figure>
       <div className="post_main">
         <div className="name_area">
-          <h3 className="username">{post.userName.stringValue}</h3>
+          <h3
+            className="username"
+            onClick={() => {
+              navigate(`/@${post.userName.stringValue}`);
+            }}
+          >
+            {post.userName.stringValue}
+          </h3>
           <p className="name_divider">|</p>
           <p className="post_time">{timeConverter(+post.time.stringValue)}</p>
         </div>
