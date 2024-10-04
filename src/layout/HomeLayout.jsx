@@ -32,7 +32,13 @@ const HomeLayout = () => {
   }, [valid]);
 
   async function callback(values) {
-    await mutateAsync(values);
+    const postData = {
+      username: userInfo.username,
+      userID: userInfo.id,
+      content: values.content,
+    };
+
+    await mutateAsync(postData);
   }
 
   return (
@@ -82,7 +88,6 @@ const HomeLayout = () => {
           <AddPostWindow
             setAdd={setAdd}
             callback={callback}
-            username="Username"
             content="Content"
             buttonName="Post"
           />

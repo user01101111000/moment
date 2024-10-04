@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import useGetUsersQuery from "../../hooks/api/useGetUsersQuery";
 import HomeLaoding from "../../containers/home/HomeLoading";
+import NotFound from "../not_found/page";
 
 const Profile = () => {
   const { username } = useParams();
@@ -14,13 +15,30 @@ const Profile = () => {
 
   const { data, isLoading } = useGetUsersQuery(!trueUser);
 
+  if (isLoading) return <HomeLaoding />;
+
   const findedUser = data
     ?.map((x) => x?.fields)
     .find((x) => x?.username?.stringValue == urlName);
 
-  if (isLoading) return <HomeLaoding />;
+  if (!trueUser && !findedUser) return <NotFound />;
 
-  return <ProfileContainer user={trueUser ? userInfo : findedUser} />;
+  const findedUserNew = {
+    firstName: findedUser?.firstName?.stringValue,
+    lastName: findedUser?.lastName?.stringValue,
+    username: findedUser?.username?.stringValue,
+    email: findedUser?.email?.stringValue,
+    id: findedUser?.id?.stringValue,
+    gender: findedUser?.gender?.stringValue,
+    avatar: findedUser?.avatar?.stringValue,
+  };
+
+  return (
+    <ProfileContainer
+      user={trueUser ? userInfo : findedUserNew}
+      trueUser={trueUser}
+    />
+  );
 };
 
 export default Profile;

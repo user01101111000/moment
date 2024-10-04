@@ -2,7 +2,7 @@ import AddPostBox from "./AddPostBox/AddPostBox";
 import "./AddPostWindow.css";
 import { motion } from "framer-motion";
 
-const AddPostWindow = ({ setAdd, callback, username, content, buttonName }) => {
+const AddPostWindow = ({ setAdd, callback, content, buttonName }) => {
   return (
     <motion.article
       initial={{ opacity: 0 }}
@@ -13,7 +13,6 @@ const AddPostWindow = ({ setAdd, callback, username, content, buttonName }) => {
       <AddPostBox
         setAdd={setAdd}
         callback={callback}
-        username={username}
         content={content}
         buttonName={buttonName}
       />

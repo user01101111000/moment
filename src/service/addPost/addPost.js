@@ -9,8 +9,11 @@ async function addPost(post) {
       id: {
         stringValue: uuid + "",
       },
-      username: {
+      userName: {
         stringValue: post.username,
+      },
+      userID: {
+        stringValue: post.userID,
       },
       content: {
         stringValue: post.content,

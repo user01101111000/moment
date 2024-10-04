@@ -2,7 +2,6 @@ import { getAxiosCommentsInstance } from "../axios_instance";
 import { v4 } from "uuid";
 
 async function postComment({ postID, comment }) {
-
   const uuid = v4().replace(/-/g, "");
 
   const commenData = {
@@ -10,7 +9,13 @@ async function postComment({ postID, comment }) {
       id: {
         stringValue: uuid + "",
       },
-      username: {
+      postID: {
+        stringValue: postID,
+      },
+      userID: {
+        stringValue: comment.userID,
+      },
+      userName: {
         stringValue: comment.username,
       },
       content: {

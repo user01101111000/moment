@@ -8,7 +8,6 @@ import Loading from "../../../ui/Loading";
 const AddPostBox = ({
   setAdd,
   callback = async () => {},
-  username,
   content,
   buttonName,
 }) => {
@@ -21,7 +20,6 @@ const AddPostBox = ({
     isSubmitting,
   } = useFormik({
     initialValues: {
-      username: "",
       content: "",
     },
     onSubmit,
@@ -48,19 +46,6 @@ const AddPostBox = ({
       </div>
 
       <form className="add_post_form" onSubmit={handleSubmit}>
-        <div className="post_input_box">
-          <label htmlFor="username">{username}</label>
-          <input
-            type="text"
-            name="username"
-            onChange={handleChange}
-            value={values.username}
-            placeholder={username}
-          />
-          {errors.username && (
-            <p className="error_message_add_post">{errors.username}</p>
-          )}
-        </div>
         <div className="post_input_box">
           <label htmlFor="content">{content}</label>
           <textarea

@@ -11,9 +11,11 @@ import pp from "../../../assets/images/pp.png";
 import AddPostWindow from "../../home/AddPostWindow/AddPostWindow";
 import useAddCommentMutation from "../../../hooks/api/useAddCommentMutation";
 import useAddPostLikeMutation from "../../../hooks/api/useAddPostLikeMutation";
+import { useSelector } from "react-redux";
 
 const CurrentPost = ({ post, commentsLength }) => {
   const [add, setAdd] = useState(false);
+  const { userInfo } = useSelector((state) => state.userInfo);
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(+post.likeCount.stringValue);
 
@@ -31,7 +33,12 @@ const CurrentPost = ({ post, commentsLength }) => {
   );
 
   async function callback(values) {
-    await mutateAsync({ postID: post.id.stringValue, comment: values });
+    const commentData = {
+      userID: userInfo.id,
+      content: values.content,
+      username: userInfo.username,
+    };
+    await mutateAsync({ postID: post.id.stringValue, comment: commentData });
   }
 
   return (
@@ -41,7 +48,6 @@ const CurrentPost = ({ post, commentsLength }) => {
           <AddPostWindow
             setAdd={setAdd}
             content={"Comment"}
-            username={"Username"}
             callback={callback}
             buttonName={"Reply"}
           />
@@ -52,7 +58,7 @@ const CurrentPost = ({ post, commentsLength }) => {
       </figure>
       <div className="post_main">
         <div className="name_area">
-          <h3 className="username">{post.username.stringValue}</h3>
+          <h3 className="username">{post.userName.stringValue}</h3>
           <p className="name_divider">|</p>
           <p className="post_time">{timeConverter(+post.time.stringValue)}</p>
         </div>

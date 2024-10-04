@@ -39,7 +39,7 @@ const Post = ({ post }) => {
       </figure>
       <div className="post_main">
         <div className="name_area">
-          <h3 className="username">{post.username.stringValue}</h3>
+          <h3 className="username">{post.userName.stringValue}</h3>
           <p className="name_divider">|</p>
           <p className="post_time">{timeConverter(+post.time.stringValue)}</p>
         </div>
