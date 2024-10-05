@@ -1,31 +1,38 @@
-import { useState, useCallback } from "react";
 import "./Post.css";
+import { useState, useCallback } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import timeConverter from "../../../utils/timeConverter";
 import { PiTelegramLogo } from "react-icons/pi";
 import { FaLink } from "react-icons/fa6";
-
 import { throttle } from "lodash";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAddPostLikeMutation from "../../../hooks/api/useAddPostLikeMutation";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 const Post = ({ post }) => {
+  const { userInfo } = useSelector((state) => state.userInfo);
   const [showShareMenu, setShowShareMenu] = useState(false);
-  const { mutateAsync } = useAddPostLikeMutation();
+  const { mutateAsync: postLike } = useAddPostLikeMutation();
   const navigate = useNavigate();
-  const location = useLocation();
-  const [liked, setLiked] = useState(false);
 
+  const likeSituation = post?.likers?.arrayValue?.values?.some(
+    (x) => x.mapValue?.fields?.id?.stringValue === userInfo.id
+  );
+
+  const [liked, setLiked] = useState(likeSituation);
   const [likeCount, setLikeCount] = useState(+post.likeCount.stringValue);
 
-  const throttled = useCallback(
-    throttle(async (action) => {
-      await mutateAsync({
+  const throttledLike = useCallback(
+    throttle(async ({ action, like }) => {
+      await postLike({
         postID: post.id.stringValue,
-        totalLikeCount: likeCount + +action,
+        totalLikeCount: like,
+        action: action,
+        liker: userInfo,
+        likers: post?.likers?.arrayValue?.values ?? [],
       });
     }, 2000),
     []
@@ -74,7 +81,7 @@ const Post = ({ post }) => {
                 onClick={() => {
                   setLiked((prev) => !prev);
                   setLikeCount((prev) => prev - 1);
-                  throttled(false);
+                  throttledLike({ action: false, like: likeCount - 1 });
                 }}
               />
             ) : (
@@ -83,7 +90,8 @@ const Post = ({ post }) => {
                 onClick={() => {
                   setLiked((prev) => !prev);
                   setLikeCount((prev) => prev + 1);
-                  throttled(true);
+
+                  throttledLike({ action: true, like: likeCount + 1 });
                 }}
               />
             )}

@@ -7,7 +7,6 @@ import { PiTelegramLogo } from "react-icons/pi";
 import { useState, useCallback } from "react";
 import { throttle } from "lodash";
 import { AnimatePresence } from "framer-motion";
-import pp from "../../../assets/images/pp.png";
 import AddPostWindow from "../../home/AddPostWindow/AddPostWindow";
 import useAddCommentMutation from "../../../hooks/api/useAddCommentMutation";
 import useAddPostLikeMutation from "../../../hooks/api/useAddPostLikeMutation";
@@ -58,7 +57,10 @@ const CurrentPost = ({ post, commentsLength }) => {
         )}
       </AnimatePresence>
       <figure className="avatar">
-        <img src={pp} alt="pp" />
+        <img
+          src={post.publisher.mapValue.fields.avatar.stringValue}
+          alt={post.publisher.mapValue.fields.username.stringValue}
+        />
       </figure>
       <div className="post_main">
         <div className="name_area">
