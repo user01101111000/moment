@@ -31,10 +31,9 @@ const HomeLayout = () => {
     getUserInfo();
   }, [valid]);
 
-  async function callback(values) {
+  async function addPost(values) {
     const postData = {
-      username: userInfo.username,
-      userID: userInfo.id,
+      ...userInfo,
       content: values.content,
     };
 
@@ -87,7 +86,7 @@ const HomeLayout = () => {
         {add && (
           <AddPostWindow
             setAdd={setAdd}
-            callback={callback}
+            callback={addPost}
             content="Content"
             buttonName="Post"
           />

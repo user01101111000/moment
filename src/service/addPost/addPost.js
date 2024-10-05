@@ -9,12 +9,6 @@ async function addPost(post) {
       id: {
         stringValue: uuid + "",
       },
-      userName: {
-        stringValue: post.username,
-      },
-      userID: {
-        stringValue: post.userID,
-      },
       content: {
         stringValue: post.content,
       },
@@ -26,6 +20,19 @@ async function addPost(post) {
       },
       time: {
         stringValue: new Date().getTime() + "",
+      },
+      publisher: {
+        mapValue: {
+          fields: {
+            avatar: { stringValue: post.avatar },
+            email: { stringValue: post.email },
+            id: { stringValue: post.id },
+            username: { stringValue: post.username },
+            firstName: { stringValue: post.firstName },
+            lastName: { stringValue: post.lastName },
+            gender: { stringValue: post.gender },
+          },
+        },
       },
     },
   };

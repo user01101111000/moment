@@ -32,13 +32,17 @@ const CurrentPost = ({ post, commentsLength }) => {
     []
   );
 
-  async function callback(values) {
+  async function postComment(values) {
     const commentData = {
-      userID: userInfo.id,
+      ...userInfo,
       content: values.content,
-      username: userInfo.username,
     };
-    await mutateAsync({ postID: post.id.stringValue, comment: commentData });
+
+    await mutateAsync({
+      postID: post.id.stringValue,
+      comment: commentData,
+      latestCommentCount: commentsLength,
+    });
   }
 
   return (
@@ -48,7 +52,7 @@ const CurrentPost = ({ post, commentsLength }) => {
           <AddPostWindow
             setAdd={setAdd}
             content={"Comment"}
-            callback={callback}
+            callback={postComment}
             buttonName={"Reply"}
           />
         )}
@@ -58,7 +62,9 @@ const CurrentPost = ({ post, commentsLength }) => {
       </figure>
       <div className="post_main">
         <div className="name_area">
-          <h3 className="username">{post.userName.stringValue}</h3>
+          <h3 className="username">
+            {post.publisher.mapValue.fields.username.stringValue}
+          </h3>
           <p className="name_divider">|</p>
           <p className="post_time">{timeConverter(+post.time.stringValue)}</p>
         </div>

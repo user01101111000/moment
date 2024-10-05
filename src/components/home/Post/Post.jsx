@@ -3,7 +3,6 @@ import "./Post.css";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
-import pp from "../../../assets/images/pp.png";
 import timeConverter from "../../../utils/timeConverter";
 import { PiTelegramLogo } from "react-icons/pi";
 import { FaLink } from "react-icons/fa6";
@@ -37,20 +36,25 @@ const Post = ({ post }) => {
       <figure
         className="avatar"
         onClick={() => {
-          navigate(`/@${post.userName.stringValue}`);
+          navigate(`/@${post.publisher.mapValue.fields.username.stringValue}`);
         }}
       >
-        <img src={pp} alt="pp" />
+        <img
+          src={post.publisher.mapValue.fields.avatar.stringValue}
+          alt={post.publisher.mapValue.fields.username.stringValue}
+        />
       </figure>
       <div className="post_main">
         <div className="name_area">
           <h3
             className="username"
             onClick={() => {
-              navigate(`/@${post.userName.stringValue}`);
+              navigate(
+                `/@${post.publisher.mapValue.fields.username.stringValue}`
+              );
             }}
           >
-            {post.userName.stringValue}
+            {post.publisher.mapValue.fields.username.stringValue}
           </h3>
           <p className="name_divider">|</p>
           <p className="post_time">{timeConverter(+post.time.stringValue)}</p>
@@ -92,7 +96,7 @@ const Post = ({ post }) => {
             onClick={() => navigate(`/post/${post.id.stringValue}`)}
           >
             <FaRegComment className="post_button_icon" />
-            {/* <p className="comments_count">{post.commentCount.stringValue}</p> */}
+            <p className="comments_count">{post.commentCount.stringValue}</p>
           </div>
 
           <div className="share_label">
