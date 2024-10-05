@@ -7,7 +7,7 @@ const useAddPostLikeMutation = () => {
     mutationFn: postLike,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["posts", "postsAndComments"],
+        queryKey: ["posts"],
       });
     },
   });

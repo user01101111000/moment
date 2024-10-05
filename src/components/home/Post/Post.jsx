@@ -13,35 +13,28 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
 const Post = ({ post }) => {
+  console.log(post.likers?.arrayValue?.values, "likers");
   const { userInfo } = useSelector((state) => state.userInfo);
   const [showShareMenu, setShowShareMenu] = useState(false);
   const { mutateAsync: postLike } = useAddPostLikeMutation();
   const navigate = useNavigate();
 
-  const likeSituation = post?.likers?.arrayValue?.values?.some(
-    (x) => x.mapValue?.fields?.id?.stringValue === userInfo.id
-  );
-
-  const [liked, setLiked] = useState(likeSituation);
+  const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(+post.likeCount.stringValue);
 
   const throttledLike = useCallback(
-    throttle(async ({ action, like }) => {
+    throttle(async ({ action }) => {
+      console.log(likeCount, "likeCount");
       await postLike({
         postID: post.id.stringValue,
-        totalLikeCount: like,
+        totalLikeCount: likeCount + +action,
         action: action,
-        liker: userInfo,
-        likers: post?.likers?.arrayValue?.values ?? [],
       });
     }, 2000),
     []
   );
 
-  useEffect(() => {
-    setLikeCount(+post.likeCount.stringValue);
-  }, [+post.likeCount.stringValue]);
-
+  
   return (
     <div className="post">
       <figure
@@ -85,7 +78,7 @@ const Post = ({ post }) => {
                 onClick={() => {
                   setLiked((prev) => !prev);
                   setLikeCount((prev) => prev - 1);
-                  throttledLike({ action: false, like: likeCount - 1 });
+                  throttledLike({ action: false });
                 }}
               />
             ) : (
@@ -94,8 +87,7 @@ const Post = ({ post }) => {
                 onClick={() => {
                   setLiked((prev) => !prev);
                   setLikeCount((prev) => prev + 1);
-
-                  throttledLike({ action: true, like: likeCount + 1 });
+                  throttledLike({ action: true });
                 }}
               />
             )}

@@ -1,9 +1,9 @@
 import { getAxiosInstance } from "../axios_instance";
 
-async function postLike({ postID, totalLikeCount, action, liker, likers }) {
-  const newLikers = action
-    ? likers
-    : likers.filter((x) => x.mapValue?.fields?.id?.stringValue !== liker.id);
+async function postLike({ postID, totalLikeCount, action }) {
+  // const newLikers = action
+  //   ? likers
+  //   : likers.filter((x) => x.mapValue?.fields?.id?.stringValue !== liker.id);
 
   const likeData = {
     fields: {
@@ -13,39 +13,40 @@ async function postLike({ postID, totalLikeCount, action, liker, likers }) {
     },
   };
 
-  const likersData =
-    !newLikers.length && action
-      ? {
-          fields: {
-            likers: {
-              arrayValue: {
-                values: [
-                  ...newLikers,
-                  action && {
-                    mapValue: {
-                      fields: {
-                        avatar: { stringValue: liker.avatar },
-                        email: { stringValue: liker.email },
-                        id: { stringValue: liker.id },
-                        username: { stringValue: liker.username },
-                        firstName: { stringValue: liker.firstName },
-                        lastName: { stringValue: liker.lastName },
-                        gender: { stringValue: liker.gender },
-                      },
-                    },
-                  },
-                ],
-              },
-            },
-          },
-        }
-      : {
-          fields: {
-            likers: {
-              nullValue: null,
-            },
-          },
-        };
+  // const unlikeDataBody = {
+  //   fields: {
+  //     likers: {
+  //       arrayValue: {
+  //         values: newLikers,
+  //       },
+  //     },
+  //   },
+  // };
+
+  // const likeDataBody = {
+  //   fields: {
+  //     likers: {
+  //       arrayValue: {
+  //         values: [
+  //           ...newLikers,
+  //           {
+  //             mapValue: {
+  //               fields: {
+  //                 avatar: { stringValue: liker.avatar },
+  //                 email: { stringValue: liker.email },
+  //                 id: { stringValue: liker.id },
+  //                 username: { stringValue: liker.username },
+  //                 firstName: { stringValue: liker.firstName },
+  //                 lastName: { stringValue: liker.lastName },
+  //                 gender: { stringValue: liker.gender },
+  //               },
+  //             },
+  //           },
+  //         ],
+  //       },
+  //     },
+  //   },
+  // };
 
   await getAxiosInstance().patch("/" + postID, likeData, {
     params: {
@@ -53,11 +54,15 @@ async function postLike({ postID, totalLikeCount, action, liker, likers }) {
     },
   });
 
-  await getAxiosInstance().patch("/" + postID, likersData, {
-    params: {
-      "updateMask.fieldPaths": "likers",
-    },
-  });
+  // await getAxiosInstance().patch(
+  //   "/" + postID,
+  //   action ? likeDataBody : unlikeDataBody,
+  //   {
+  //     params: {
+  //       "updateMask.fieldPaths": "likers",
+  //     },
+  //   }
+  // );
 }
 
 export default postLike;

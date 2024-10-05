@@ -14,6 +14,13 @@ const getAxiosCommentsInstance = (postID) =>
     }/databases/(default)/documents/posts/${postID}/comments`,
   });
 
+const getAxiosLikesInstance = (postID) =>
+  axios.create({
+    baseURL: `https://firestore.googleapis.com/v1/projects/${
+      import.meta.env.VITE_PROJECT_ID
+    }/databases/(default)/documents/posts/${postID}/likes`,
+  });
+
 const getAxiosUsersInstance = () =>
   axios.create({
     baseURL: `https://firestore.googleapis.com/v1/projects/${
@@ -57,4 +64,5 @@ export {
   getAxiosAuthLoginInstance,
   getAxiosRefreshTokenInstance,
   getAxiosUserInfoInstance,
+  getAxiosLikesInstance,
 };
