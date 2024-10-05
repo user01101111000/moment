@@ -1,5 +1,5 @@
 import "./Post.css";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
@@ -37,6 +37,10 @@ const Post = ({ post }) => {
     }, 2000),
     []
   );
+
+  useEffect(() => {
+    setLikeCount(+post.likeCount.stringValue);
+  }, [+post.likeCount.stringValue]);
 
   return (
     <div className="post">
