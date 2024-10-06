@@ -1,7 +1,6 @@
 import Skeleton from "../../components/ui/Skeleton/Skeleton";
 import { motion } from "framer-motion";
 import "./HomeLoading.css";
-import "./HomeConatiner.css";
 import Loading from "../../components/ui/Loading";
 
 const HomeLoading = () => {
@@ -36,7 +35,7 @@ const HomeLoading = () => {
     <motion.article
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="home loading_container"
+      className="loading_container"
     >
       <Loading size={"1.3rem"} />
     </motion.article>

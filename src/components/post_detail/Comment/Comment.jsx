@@ -1,5 +1,4 @@
 import "./Comment.css";
-import "../CurrentPost/CurrentPost.css";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { AiFillDislike } from "react-icons/ai";

@@ -12,8 +12,7 @@ import useAddPostLikeMutation from "../../../hooks/api/useAddPostLikeMutation";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
-const Post = ({ post }) => {
-  console.log(post.likers?.arrayValue?.values, "likers");
+const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
   const { userInfo } = useSelector((state) => state.userInfo);
   const [showShareMenu, setShowShareMenu] = useState(false);
   const { mutateAsync: postLike } = useAddPostLikeMutation();
@@ -34,7 +33,6 @@ const Post = ({ post }) => {
     []
   );
 
-  
   return (
     <div className="post">
       <figure
@@ -95,11 +93,15 @@ const Post = ({ post }) => {
             <p className="likes_count">{likeCount}</p>
           </div>
 
-          <div
-            className="comments"
-            onClick={() => navigate(`/post/${post.id.stringValue}`)}
-          >
-            <FaRegComment className="post_button_icon" />
+          <div className="comments">
+            <FaRegComment
+              className="post_button_icon"
+              onClick={
+                isDetail
+                  ? () => setAdd(true)
+                  : () => navigate(`/post/${post.id.stringValue}`)
+              }
+            />
             <p className="comments_count">{post.commentCount.stringValue}</p>
           </div>
 
@@ -120,7 +122,9 @@ const Post = ({ post }) => {
                   onClick={() => {
                     setShowShareMenu(false);
                     navigator.clipboard.writeText(
-                      `${window.location.href}post/${post.id.stringValue}`
+                      isDetail
+                        ? `${window.location.href}`
+                        : `${window.location.href}post/${post.id.stringValue}`
                     );
                   }}
                 >

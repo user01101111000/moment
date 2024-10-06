@@ -8,12 +8,14 @@ import { AnimatePresence } from "framer-motion";
 import { FaUserLarge } from "react-icons/fa6";
 import { TiPlus } from "react-icons/ti";
 import { HiHome } from "react-icons/hi2";
+import { IoIosSettings } from "react-icons/io";
 import useAddPostMutation from "../hooks/api/useAddPostMutation";
 import AddPostWindow from "../components/home/AddPostWindow/AddPostWindow";
 import useGetUserInfoMutation from "../hooks/api/useGetUserInfoMutation";
 import isTokenExpired from "../utils/isTokenExpired ";
 import { decryptToken } from "../utils/cryptoID";
 import { useSelector } from "react-redux";
+import HomeLoading from "../containers/home/HomeLoading";
 
 const HomeLayout = () => {
   const navigate = useNavigate();
@@ -48,7 +50,7 @@ const HomeLayout = () => {
             <Outlet />
           </Suspense>
         ) : (
-          <h1>Loading</h1>
+          <HomeLoading />
         )}
         <div className="navigation_bar">
           <div></div>
@@ -69,15 +71,24 @@ const HomeLayout = () => {
             </NavLink>
           </div>
 
-          <div className="nav_button logout_nav_icon">
-            <RiLogoutBoxRLine
-              className="nav_button_icon"
-              onClick={() => {
-                localStorage.removeItem("m_i&r");
-                logout();
-                navigate("/auth");
-              }}
-            />
+          <div
+            className="nav_buttons_footer"
+            onClick={() => navigate("/settings")}
+          >
+            <div className="nav_button settings_nav_icon">
+              <IoIosSettings className="nav_button_icon" />
+            </div>
+
+            <div className="nav_button logout_nav_icon">
+              <RiLogoutBoxRLine
+                className="nav_button_icon"
+                onClick={() => {
+                  localStorage.removeItem("m_i&r");
+                  logout();
+                  navigate("/auth");
+                }}
+              />
+            </div>
           </div>
         </div>
       </article>
