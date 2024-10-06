@@ -1,7 +1,8 @@
 import "./ProfileContainer.css";
 import { motion } from "framer-motion";
-
+import { useTranslation } from "react-i18next";
 const ProfileContainer = ({ user, trueUser }) => {
+  const { t } = useTranslation();
   return (
     <motion.section
       initial={{ opacity: 0.5 }}
@@ -18,7 +19,7 @@ const ProfileContainer = ({ user, trueUser }) => {
         </figure>
       </div>
 
-      {trueUser && <h1>Edit profile</h1>}
+      {trueUser && <h1>{t("profile.editProfile")}</h1>}
     </motion.section>
   );
 };

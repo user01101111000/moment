@@ -1,11 +1,13 @@
 import ProtectedRoute from "../components/helper/ProtectedRoute";
 import ProtectedProfileRoute from "../components/helper/ProtectedProfileRoute";
+import ProtectedAuthRoute from "../components/helper/ProtectedAuthRoute";
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import SuspenseLoading from "../components/helper/SuspenseLoading";
 
 const HomeLayout = lazy(() => import("../layout/HomeLayout"));
 const Auth = lazy(() => import("../pages/auth/page"));
+const Settings = lazy(() => import("../pages/settings/page"));
 const Home = lazy(() => import("../pages/home/page"));
 const PostDetail = lazy(() => import("../pages/post_detail/page"));
 const Profile = lazy(() => import("../pages/profile/page"));
@@ -34,6 +36,10 @@ const routes = [
         ),
       },
       {
+        path: "settings",
+        element: <Settings />,
+      },
+      {
         path: "*",
         element: <NotFound />,
       },
@@ -43,7 +49,9 @@ const routes = [
     path: "/auth",
     element: (
       <Suspense fallback={<SuspenseLoading />}>
-        <Auth />
+        <ProtectedAuthRoute>
+          <Auth />
+        </ProtectedAuthRoute>
       </Suspense>
     ),
     auth: false,

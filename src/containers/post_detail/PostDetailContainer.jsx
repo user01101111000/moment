@@ -8,8 +8,10 @@ import { useState } from "react";
 import AddPostWindow from "../../components/home/AddPostWindow/AddPostWindow";
 import useAddCommentMutation from "../../hooks/api/useAddCommentMutation";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const PostDetailContainer = ({ post, comments }) => {
+  const { t } = useTranslation();
   const { userInfo } = useSelector((state) => state.userInfo);
   const navigate = useNavigate();
   const [add, setAdd] = useState(false);
@@ -40,9 +42,9 @@ const PostDetailContainer = ({ post, comments }) => {
         {add && (
           <AddPostWindow
             setAdd={setAdd}
-            content={"Comment"}
+            content={t("commentShareBox.comment")}
             callback={postComment}
-            buttonName={"Reply"}
+            buttonName={t("commentShareBox.reply")}
           />
         )}
       </AnimatePresence>
@@ -64,13 +66,13 @@ const PostDetailContainer = ({ post, comments }) => {
 
       <div className="reply_label_area">
         <h1 className="reply_label">
-          Likes ·{" "}
+          {t("post.likes")} ·{" "}
           <span className="reply_count">{post.likeCount.stringValue}</span>
         </h1>
         <h1 className="reply_label">
-          Replies ·{" "}
+          {t("post.replies")} ·{" "}
           <span className="reply_count">
-            {comments.length ? comments.length : "No replies yet"}
+            {comments.length ? comments.length : t("post.noReplies")}
           </span>
         </h1>
       </div>

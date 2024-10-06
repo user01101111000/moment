@@ -8,8 +8,10 @@ import { loginSchema } from "../../../utils/schema";
 import { motion } from "framer-motion";
 import useLoginMutation from "../../../hooks/api/useLoginMutation";
 import { toast, Bounce } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const Login = ({ setShowLogin }) => {
+  const { t } = useTranslation();
   const { mutateAsync } = useLoginMutation();
 
   const {
@@ -58,14 +60,14 @@ const Login = ({ setShowLogin }) => {
       exit={{ opacity: 0 }}
       className="login_box"
     >
-      <h1 className="login_label">LOGIN</h1>
+      <h1 className="login_label">{t("login.loginLabel")}</h1>
       <form className="login_form" onSubmit={handleSubmit}>
         <div className="input_box">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t("login.emailLabel")}</label>
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder={t("login.emailLabel")}
             onChange={handleChange}
             value={values.email}
           />
@@ -74,12 +76,12 @@ const Login = ({ setShowLogin }) => {
         </div>
 
         <div className="input_box">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t("login.passwordLabel")}</label>
           <div className="custom_input_box">
             <input
               type={showPassword ? "text" : "password"}
               name="password"
-              placeholder="Password"
+              placeholder={t("login.passwordLabel")}
               onChange={handleChange}
               value={values.password}
             />
@@ -105,11 +107,11 @@ const Login = ({ setShowLogin }) => {
           className={isSubmitting ? "submitting" : ""}
           disabled={isSubmitting}
         >
-          {isSubmitting ? <Loading size={"1rem"} /> : "Login"}
+          {isSubmitting ? <Loading size={"1rem"} /> : t("login.loginButton")}
         </button>
 
         <h1 className="register_link_text" onClick={() => setShowLogin(false)}>
-          {`Don't have an account ? `} <span>Register Now</span>
+          {t("login.loginFooterText")} <span>{t("login.registerNow")}</span>
         </h1>
       </form>
     </motion.article>

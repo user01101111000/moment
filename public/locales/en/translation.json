@@ -1,0 +1,61 @@
+{
+  "settings": {
+    "language": "Language"
+  },
+  "login": {
+    "loginLabel": "LOGIN",
+    "emailLabel": "E-mail",
+    "passwordLabel": "Password",
+    "loginButton": "Login",
+    "loginFooterText": "Don't have an account ? ",
+    "registerNow": "Register now"
+  },
+  "register": {
+    "registerLabel": "REGISTER",
+    "firstNameLabel": "First name",
+    "lastNameLabel": "Last name",
+    "usernameLabel": "Username",
+    "emailLabel": "E-mail",
+    "passwordLabel": "Password",
+    "registerButton": "Register",
+    "genderMale": "Male",
+    "genderFemale": "Female",
+    "registerFooterText": "You have an account ? ",
+    "loginNow": "Login now"
+  },
+  "profile": {
+    "editProfile": "Edit profile"
+  },
+  "time": {
+    "lessThanAMinuteAgo": "less than a minute ago",
+    "minuteAgo": "minute ago",
+    "minutesAgo": "minutes ago",
+    "hourAgo": "hour ago",
+    "hoursAgo": "hours ago",
+    "dayAgo": "day ago",
+    "daysAgo": "days ago",
+    "monthAgo": "month ago",
+    "monthsAgo": "months ago",
+    "yearAgo": "year ago",
+    "yearsAgo": "years ago"
+  },
+  "post": {
+    "likes": "Likes",
+    "replies": "Replies",
+    "noReplies": "No replies yet",
+    "copyLink": "Copy link"
+  },
+
+  "postShareBox": {
+    "post": "Post",
+    "content": "Content"
+  },
+  "commentShareBox": {
+    "comment": "Comment",
+    "reply": "Reply"
+  },
+  "language": {
+    "english": "English",
+    "azerbaijani": "Azerbaijani"
+  }
+}

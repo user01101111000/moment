@@ -32,12 +32,13 @@
 
 .input_box label {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 1.2rem;
+  font-size: 1rem !important;
   font-weight: 700;
 }
 
 input[type="radio"] {
   accent-color: #09090b;
+  font-size: 1rem !important;
 }
 
 .input_box input {

@@ -1,0 +1,61 @@
+{
+  "settings": {
+    "language": "Dil"
+  },
+  "login": {
+    "loginLabel": "DAXİL OL",
+    "emailLabel": "E-poçt",
+    "passwordLabel": "Şifrə",
+    "loginButton": "Daxil ol",
+    "loginFooterText": "Hesabınız yoxdur ? ",
+    "registerNow": "Qeydiyyatdan keç"
+  },
+  "register": {
+    "registerLabel": "QEYDİYYAT",
+    "firstNameLabel": "Ad",
+    "lastNameLabel": "Soyad",
+    "usernameLabel": "İstifadəçi adı",
+    "emailLabel": "E-poçt",
+    "passwordLabel": "Şifrə",
+    "registerButton": "Qeydiyyatdan keç",
+    "genderMale": "Kişi",
+    "genderFemale": "Qadın",
+    "registerFooterText": "Hesabınız var ? ",
+    "loginNow": "Daxil olun"
+  },
+  "profile": {
+    "editProfile": "Profili redaktə et"
+  },
+  "time": {
+    "lessThanAMinuteAgo": "indicə",
+    "minuteAgo": "dəqiqə əvvəl",
+    "minutesAgo": "dəqiqə əvvəl",
+    "hourAgo": "saat əvvəl",
+    "hoursAgo": "saat əvvəl",
+    "dayAgo": "gün əvvəl",
+    "daysAgo": "gün əvvəl",
+    "monthAgo": "ay əvvəl",
+    "monthsAgo": "ay əvvəl",
+    "yearAgo": "il əvvəl",
+    "yearsAgo": "il əvvəl"
+  },
+  "post": {
+    "likes": "Bəyənmələr",
+    "replies": "Rəylər",
+    "noReplies": "Hələki rəy yoxdur",
+    "copyLink": "Linki köçür"
+  },
+
+  "postShareBox": {
+    "post": "Paylaş",
+    "content": "Mətn"
+  },
+  "commentShareBox": {
+    "comment": "Rəy",
+    "reply": "Göndər"
+  },
+  "language": {
+    "english": "İngiliscə",
+    "azerbaijani": "Azərbaycanca"
+  }
+}

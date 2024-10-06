@@ -7,8 +7,10 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Loading from "../../ui/Loading";
 import { toast, Bounce } from "react-toastify";
 import useRegisterMutation from "../../../hooks/api/useRegisterMutation";
+import { useTranslation } from "react-i18next";
 
 const Register = ({ setShowLogin }) => {
+  const { t } = useTranslation();
   const { mutateAsync } = useRegisterMutation();
 
   const {
@@ -57,17 +59,17 @@ const Register = ({ setShowLogin }) => {
       exit={{ opacity: 0 }}
       className="register_box"
     >
-      <h1 className="login_label">REGISTER</h1>
+      <h1 className="login_label">{t("register.registerLabel")}</h1>
 
       <form className="login_form" onSubmit={handleSubmit}>
         <div className="input_box_names">
           <div className="input_box">
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="firstName">{t("register.firstNameLabel")}</label>
 
             <input
               type="text"
               name="firstName"
-              placeholder="First Name"
+              placeholder={t("register.firstNameLabel")}
               onChange={handleChange}
               value={values.firstName}
             />
@@ -78,11 +80,11 @@ const Register = ({ setShowLogin }) => {
           </div>
 
           <div className="input_box">
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="lastName">{t("register.lastNameLabel")}</label>
             <input
               type="text"
               name="lastName"
-              placeholder="Last Name"
+              placeholder={t("register.lastNameLabel")}
               onChange={handleChange}
               value={values.lastName}
             />
@@ -94,11 +96,11 @@ const Register = ({ setShowLogin }) => {
         </div>
 
         <div className="input_box">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">{t("register.usernameLabel")}</label>
           <input
             type="text"
             name="username"
-            placeholder="Username"
+            placeholder={t("register.usernameLabel")}
             onChange={handleChange}
             value={values.username}
           />
@@ -107,11 +109,11 @@ const Register = ({ setShowLogin }) => {
         </div>
 
         <div className="input_box">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t("register.emailLabel")}</label>
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder={t("register.emailLabel")}
             onChange={handleChange}
             value={values.email}
           />
@@ -120,12 +122,12 @@ const Register = ({ setShowLogin }) => {
         </div>
 
         <div className="input_box">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t("register.passwordLabel")}</label>
           <div className="custom_input_box">
             <input
               type={showPassword ? "text" : "password"}
               name="password"
-              placeholder="Password"
+              placeholder={t("register.passwordLabel")}
               onChange={handleChange}
               value={values.password}
             />
@@ -157,7 +159,7 @@ const Register = ({ setShowLogin }) => {
               checked={values.gender == "male"}
               onChange={handleChange}
             />
-            Male
+            {t("register.genderMale")}
           </label>
 
           <label className="radio_label">
@@ -168,7 +170,7 @@ const Register = ({ setShowLogin }) => {
               checked={values.gender == "female"}
               onChange={handleChange}
             />
-            Female
+            {t("register.genderFemale")}
           </label>
         </div>
 
@@ -178,11 +180,16 @@ const Register = ({ setShowLogin }) => {
           className={isSubmitting ? "submitting" : ""}
           disabled={isSubmitting}
         >
-          {isSubmitting ? <Loading size={"1rem"} /> : "Register"}
+          {isSubmitting ? (
+            <Loading size={"1rem"} />
+          ) : (
+            t("register.registerButton")
+          )}
         </button>
 
         <h1 className="register_link_text" onClick={() => setShowLogin(true)}>
-          {`You have an account ? `} <span>Login Now</span>
+          {t("register.registerFooterText")}{" "}
+          <span>{t("register.loginNow")}</span>
         </h1>
       </form>
     </motion.article>

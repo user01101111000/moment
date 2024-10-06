@@ -1,0 +1,47 @@
+.settings_container {
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+}
+
+.lang_setting {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lang_setting h1 {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+.lang_select {
+  background-color: #181818;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  user-select: none;
+  cursor: pointer;
+}
+
+.lang_select:focus {
+  outline: none;
+}
+
+.lang_select option {
+  background-color: #181818;
+}
+
+.lang_label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lang_label .lang_icon {
+  font-size: 1.2rem;
+}

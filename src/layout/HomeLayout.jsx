@@ -16,8 +16,10 @@ import isTokenExpired from "../utils/isTokenExpired ";
 import { decryptToken } from "../utils/cryptoID";
 import { useSelector } from "react-redux";
 import HomeLoading from "../containers/home/HomeLoading";
+import { useTranslation } from "react-i18next";
 
 const HomeLayout = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [add, setAdd] = useState(false);
   const { logout } = useAuth();
@@ -75,9 +77,9 @@ const HomeLayout = () => {
             className="nav_buttons_footer"
             onClick={() => navigate("/settings")}
           >
-            <div className="nav_button settings_nav_icon">
+            <NavLink to="/settings" className="nav_button">
               <IoIosSettings className="nav_button_icon" />
-            </div>
+            </NavLink>
 
             <div className="nav_button logout_nav_icon">
               <RiLogoutBoxRLine
@@ -98,8 +100,8 @@ const HomeLayout = () => {
           <AddPostWindow
             setAdd={setAdd}
             callback={addPost}
-            content="Content"
-            buttonName="Post"
+            content={t("postShareBox.content")}
+            buttonName={t("postShareBox.post")}
           />
         )}
       </AnimatePresence>

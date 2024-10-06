@@ -11,8 +11,11 @@ import { useNavigate } from "react-router-dom";
 import useAddPostLikeMutation from "../../../hooks/api/useAddPostLikeMutation";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import translateTime from "../../../utils/translateTime";
 
 const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
+  const { t } = useTranslation();
   const { userInfo } = useSelector((state) => state.userInfo);
   const [showShareMenu, setShowShareMenu] = useState(false);
   const { mutateAsync: postLike } = useAddPostLikeMutation();
@@ -59,7 +62,9 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
             {post.publisher.mapValue.fields.username.stringValue}
           </h3>
           <p className="name_divider">|</p>
-          <p className="post_time">{timeConverter(+post.time.stringValue)}</p>
+          <p className="post_time">
+            {translateTime(timeConverter(+post.time.stringValue), t).join(" ")}
+          </p>
         </div>
         <p
           className="post_content"
@@ -128,7 +133,7 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
                     );
                   }}
                 >
-                  <h1>Copy link</h1>
+                  <h1>{t("post.copyLink")}</h1>
                   <FaLink className="post_button_icon" />
                 </div>
               </motion.div>
