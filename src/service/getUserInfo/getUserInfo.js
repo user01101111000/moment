@@ -37,8 +37,6 @@ async function getUserInfo() {
 
   const { data: userData } = await getAxiosUsersInstance().get(`/` + userID);
 
-  console.log("sorgu atdi melumati getirdi");
-
   return userData;
 }
 

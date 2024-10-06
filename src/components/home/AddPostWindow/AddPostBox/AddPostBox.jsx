@@ -1,9 +1,9 @@
 import "./AddPostBox.css";
 import { useFormik } from "formik";
-import { IoCloseSharp } from "react-icons/io5";
 import { postSchema } from "../../../../utils/schema";
 import { motion } from "framer-motion";
 import Loading from "../../../ui/Loading";
+import { useTranslation } from "react-i18next";
 
 const AddPostBox = ({
   setAdd,
@@ -11,6 +11,8 @@ const AddPostBox = ({
   content,
   buttonName,
 }) => {
+  const { t } = useTranslation();
+
   const {
     values,
     handleChange,
@@ -40,18 +42,13 @@ const AddPostBox = ({
       exit={{ opacity: 0 }}
       className="add_post_box"
     >
-      <div className="close_icon_area">
-        <div></div>
-        <IoCloseSharp onClick={() => setAdd(false)} className="close_icon" />
-      </div>
-
       <form className="add_post_form" onSubmit={handleSubmit}>
         <div className="post_input_box">
           <label htmlFor="content">{content}</label>
           <textarea
             name="content"
             id="content"
-            rows={7}
+            rows={10}
             value={values.content}
             onChange={handleChange}
             placeholder={content}
@@ -61,13 +58,23 @@ const AddPostBox = ({
           )}
         </div>
 
-        <button
-          type="submit"
-          className={isSubmitting ? "submitting" : ""}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? <Loading size={"1rem"} /> : buttonName}
-        </button>
+        <div className="post_share_buttons">
+          <button
+            type="submit"
+            className={isSubmitting ? "submitting" : ""}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? <Loading size={"1rem"} /> : buttonName}
+          </button>
+
+          <button
+            onClick={() => setAdd(false)}
+            type="button"
+            className="cancel_button_add_post"
+          >
+            {t("postShareBox.cancel")}
+          </button>
+        </div>
       </form>
     </motion.article>
   );

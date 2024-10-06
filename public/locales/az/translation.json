@@ -8,7 +8,8 @@
     "passwordLabel": "Şifrə",
     "loginButton": "Daxil ol",
     "loginFooterText": "Hesabınız yoxdur ? ",
-    "registerNow": "Qeydiyyatdan keç"
+    "registerNow": "Qeydiyyatdan keç",
+    "notFoundAccount": "Hesab tapılmadı."
   },
   "register": {
     "registerLabel": "QEYDİYYAT",
@@ -21,7 +22,8 @@
     "genderMale": "Kişi",
     "genderFemale": "Qadın",
     "registerFooterText": "Hesabınız var ? ",
-    "loginNow": "Daxil olun"
+    "loginNow": "Daxil olun",
+    "createdAccount": "Hesab yaradıldı."
   },
   "profile": {
     "editProfile": "Profili redaktə et"
@@ -48,13 +50,16 @@
 
   "postShareBox": {
     "post": "Paylaş",
-    "content": "Mətn"
+    "content": "Mətn",
+    "cancel": "Ləğv et"
   },
   "commentShareBox": {
     "comment": "Rəy",
     "reply": "Göndər"
   },
   "language": {
+    "az": "Azərbaycanca",
+    "en": "İngiliscə",
     "english": "İngiliscə",
     "azerbaijani": "Azərbaycanca"
   }

@@ -37,7 +37,7 @@ const Login = ({ setShowLogin }) => {
       await mutateAsync(values);
       resetForm();
     } catch (e) {
-      toast.error("Account not found.", {
+      toast.error(t("login.notFoundAccount"), {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,

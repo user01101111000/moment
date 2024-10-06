@@ -8,7 +8,8 @@
     "passwordLabel": "Password",
     "loginButton": "Login",
     "loginFooterText": "Don't have an account ? ",
-    "registerNow": "Register now"
+    "registerNow": "Register now",
+    "notFoundAccount": "Account not found."
   },
   "register": {
     "registerLabel": "REGISTER",
@@ -21,7 +22,8 @@
     "genderMale": "Male",
     "genderFemale": "Female",
     "registerFooterText": "You have an account ? ",
-    "loginNow": "Login now"
+    "loginNow": "Login now",
+    "createdAccount": "Account created."
   },
   "profile": {
     "editProfile": "Edit profile"
@@ -48,13 +50,16 @@
 
   "postShareBox": {
     "post": "Post",
-    "content": "Content"
+    "content": "Content",
+    "cancel": "Cancel"
   },
   "commentShareBox": {
     "comment": "Comment",
     "reply": "Reply"
   },
   "language": {
+    "en": "English",
+    "az": "Azerbaijani",
     "english": "English",
     "azerbaijani": "Azerbaijani"
   }
