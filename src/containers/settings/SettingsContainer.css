@@ -11,7 +11,7 @@
 
 .lang_setting h1 {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   user-select: none;
 }
@@ -43,5 +43,5 @@
 }
 
 .lang_label .lang_icon {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }

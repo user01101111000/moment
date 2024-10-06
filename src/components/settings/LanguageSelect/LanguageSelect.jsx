@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./LanguageSelect.css";
 import Select from "react-select";
 import { useTranslation } from "react-i18next";
 
@@ -30,7 +29,7 @@ const LanguageSelect = () => {
           control: (base) => ({
             ...base,
             fontFamily: "Geist",
-            fontSize: "1rem",
+            fontSize: "0.9rem",
             fontWeight: "600",
             backgroundColor: "#181818",
             color: "#fff",
@@ -49,8 +48,9 @@ const LanguageSelect = () => {
             color: "#fff",
             border: "0.5px solid rgba(255, 255, 255, 0.2)",
             fontFamily: "Geist",
-            fontSize: "1rem",
+            fontSize: "0.9rem",
             fontWeight: "600",
+            padding: "0.3rem",
           }),
           option: (base) => ({
             ...base,

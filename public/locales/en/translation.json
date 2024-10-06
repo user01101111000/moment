@@ -45,7 +45,8 @@
     "likes": "Likes",
     "replies": "Replies",
     "noReplies": "No replies yet",
-    "copyLink": "Copy link"
+    "copyLink": "Copy link",
+    "showProfile": "Show profile"
   },
 
   "postShareBox": {

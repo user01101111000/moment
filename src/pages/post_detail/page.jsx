@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import PostDetailContainer from "@/containers/post_detail/PostDetailContainer";
+import PostDetailContainer from "../../containers/post_detail/PostDetailContainer";
 import useGetPostAndCommentsQuery from "../../hooks/api/getPostAndCommentsQuery";
 import HomeLaoding from "../../containers/home/HomeLoading";
 import timeSorter from "../../utils/timeSorter";
@@ -19,7 +19,23 @@ const PostDetail = () => {
 
   const comments = timeSorter(data[1] ?? [])?.map((x) => x?.fields) ?? [];
 
-  return <PostDetailContainer post={currentPost} comments={comments} />;
+  const commentPublishers = comments
+    .map((x) => x?.publisher?.mapValue?.fields)
+    .reduce(
+      (acc, x) =>
+        !acc.some((z) => z.id.stringValue === x.id.stringValue)
+          ? [...acc, x]
+          : acc,
+      []
+    );
+
+  return (
+    <PostDetailContainer
+      post={currentPost}
+      comments={comments}
+      commentPublishers={commentPublishers}
+    />
+  );
 };
 
 export default PostDetail;

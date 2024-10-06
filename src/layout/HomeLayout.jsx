@@ -73,10 +73,7 @@ const HomeLayout = () => {
             </NavLink>
           </div>
 
-          <div
-            className="nav_buttons_footer"
-            onClick={() => navigate("/settings")}
-          >
+          <div className="nav_buttons_footer">
             <NavLink to="/settings" className="nav_button">
               <IoIosSettings className="nav_button_icon" />
             </NavLink>

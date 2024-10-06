@@ -104,7 +104,13 @@
   .nav_buttons {
     flex-direction: row;
   }
-  .logout_nav_icon {
+  .nav_buttons_footer {
     display: none;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .nav_buttons {
+    gap: 2rem;
   }
 }

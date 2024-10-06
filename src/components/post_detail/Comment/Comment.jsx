@@ -4,14 +4,23 @@ import { AiOutlineDislike } from "react-icons/ai";
 import { AiFillDislike } from "react-icons/ai";
 import timeConverter from "@/utils/timeConverter";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Comment = ({ comment }) => {
+  const navigate = useNavigate();
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
 
   return (
     <div className="post">
-      <figure className="avatar">
+      <figure
+        className="avatar"
+        onClick={() => {
+          navigate(
+            `/@${comment.publisher.mapValue.fields.username.stringValue}`
+          );
+        }}
+      >
         <img
           src={comment.publisher.mapValue.fields.avatar.stringValue}
           alt={comment.publisher.mapValue.fields.username.stringValue}
@@ -19,7 +28,14 @@ const Comment = ({ comment }) => {
       </figure>
       <div className="post_main">
         <div className="name_area">
-          <h3 className="username">
+          <h3
+            className="username"
+            onClick={() => {
+              navigate(
+                `/@${comment.publisher.mapValue.fields.username.stringValue}`
+              );
+            }}
+          >
             {comment.publisher.mapValue.fields.username.stringValue}
           </h3>
           <p className="name_divider">|</p>

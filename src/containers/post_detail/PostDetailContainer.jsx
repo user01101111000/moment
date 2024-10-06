@@ -9,8 +9,10 @@ import AddPostWindow from "../../components/home/AddPostWindow/AddPostWindow";
 import useAddCommentMutation from "../../hooks/api/useAddCommentMutation";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import CommentPublishers from "../../components/post_detail/CommentPublishers/CommentPublishers";
 
-const PostDetailContainer = ({ post, comments }) => {
+const PostDetailContainer = ({ post, comments, commentPublishers }) => {
+  const [showCommentPublishers, setShowCommentPublishers] = useState(false);
   const { t } = useTranslation();
   const { userInfo } = useSelector((state) => state.userInfo);
   const navigate = useNavigate();
@@ -55,7 +57,6 @@ const PostDetailContainer = ({ post, comments }) => {
           onClick={() => navigate("/")}
         />
       </div>
-      {/* <CurrentPost post={post} commentsLength={comments.length} /> */}
 
       <Post
         post={post}
@@ -69,7 +70,10 @@ const PostDetailContainer = ({ post, comments }) => {
           {t("post.likes")} ·{" "}
           <span className="reply_count">{post.likeCount.stringValue}</span>
         </h1>
-        <h1 className="reply_label">
+        <h1
+          className="reply_label"
+          onClick={() => setShowCommentPublishers((prev) => !prev)}
+        >
           {t("post.replies")} ·{" "}
           <span className="reply_count">
             {comments.length ? comments.length : t("post.noReplies")}
@@ -77,6 +81,15 @@ const PostDetailContainer = ({ post, comments }) => {
         </h1>
       </div>
       <Comments comments={comments} />
+
+      <AnimatePresence>
+        {showCommentPublishers && comments.length && (
+          <CommentPublishers
+            commentPublishers={commentPublishers}
+            setShowCommentPublishers={setShowCommentPublishers}
+          />
+        )}
+      </AnimatePresence>
     </motion.article>
   );
 };

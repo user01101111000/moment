@@ -9,7 +9,7 @@ const SuspenseLoading = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#09090b",
+        backgroundColor: "#181818",
       }}
     >
       <Loading size={"1.3rem"} />
