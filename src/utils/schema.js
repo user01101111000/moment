@@ -64,4 +64,19 @@ const registerSchema = yup.object().shape({
   gender: yup.string().required("Gender is required."),
 });
 
-export { postSchema, loginSchema, registerSchema };
+const editProfileSchema = yup.object().shape({
+  firstName: yup
+    .string()
+    .min(3, "First name must be at least 3 characters.")
+    .matches(nameRegEx, "Invalid first name."),
+  lastName: yup
+    .string()
+    .min(3, "Last name must be at least 3 characters.")
+    .matches(nameRegEx, "Invalid last name."),
+  bio: yup.string(),
+  avatar: yup
+    .mixed()
+    .test("required", "File is required", (value) => value !== ""),
+});
+
+export { postSchema, loginSchema, registerSchema, editProfileSchema };

@@ -11,6 +11,6 @@ export default defineConfig({
     },
   },
   server: {
-    host: true, // Tüm IP adreslerinden erişilebilir olmasını sağlar
+    host: true, 
   }
 });

@@ -35,12 +35,15 @@ async function register(userInfo) {
       id: {
         stringValue: userID,
       },
+      bio: {
+        stringValue: "No bio yet.",
+      },
       gender: {
         stringValue: userInfo.gender,
       },
       avatar: {
         stringValue:
-          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+          "https://firebasestorage.googleapis.com/v0/b/moment-c8183.appspot.com/o/common%2Fpp.png?alt=media&token=4d85b22c-df4a-48d5-952f-32c6bd1406d7",
       },
     },
   };
