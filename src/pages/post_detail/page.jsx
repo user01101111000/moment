@@ -19,15 +19,7 @@ const PostDetail = () => {
 
   const comments = timeSorter(data[1] ?? [])?.map((x) => x?.fields) ?? [];
 
-  const commentPublishers = comments
-    .map((x) => x?.publisher?.mapValue?.fields)
-    .reduce(
-      (acc, x) =>
-        !acc.some((z) => z.id.stringValue === x.id.stringValue)
-          ? [...acc, x]
-          : acc,
-      []
-    );
+  const commentPublishers = comments.map((x) => x?.publisher?.stringValue);
 
   return (
     <PostDetailContainer

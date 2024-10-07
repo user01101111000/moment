@@ -26,7 +26,12 @@
     "createdAccount": "Account created."
   },
   "profile": {
-    "editProfile": "Edit profile"
+    "editProfile": "Edit profile",
+    "changeAvatar": "Change avatar",
+    "firstNameLabel": "First name",
+    "lastNameLabel": "Last name",
+    "bioLabel": "Bio",
+    "save": "Save"
   },
   "time": {
     "lessThanAMinuteAgo": "less than a minute ago",

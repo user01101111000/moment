@@ -4,8 +4,10 @@ import { isObject, useFormik } from "formik";
 import Loading from "../../../ui/Loading";
 import { editProfileSchema } from "../../../../utils/schema";
 import useUpdateUserInfoMutation from "../../../../hooks/api/useUpdateUserInfoMutation";
+import { useTranslation } from "react-i18next";
 
 const EditProfileBox = ({ setShowEditProfile, user }) => {
+  const { t } = useTranslation();
   const { mutateAsync } = useUpdateUserInfoMutation();
 
   const {
@@ -64,7 +66,7 @@ const EditProfileBox = ({ setShowEditProfile, user }) => {
           </figure>
 
           <label className="custom_file_input" htmlFor="avatar">
-            Change avatar
+            {t("profile.changeAvatar")}
           </label>
 
           <input
@@ -79,7 +81,7 @@ const EditProfileBox = ({ setShowEditProfile, user }) => {
         </div>
 
         <div className="edit_profile_box_form_field">
-          <label htmlFor="firstName">First Name</label>
+          <label htmlFor="firstName">{t("profile.firstNameLabel")}</label>
           <input
             type="text"
             id="firstName"
@@ -93,7 +95,7 @@ const EditProfileBox = ({ setShowEditProfile, user }) => {
         </div>
 
         <div className="edit_profile_box_form_field">
-          <label htmlFor="lastName">Last Name</label>
+          <label htmlFor="lastName">{t("profile.lastNameLabel")}</label>
           <input
             type="text"
             id="lastName"
@@ -107,7 +109,7 @@ const EditProfileBox = ({ setShowEditProfile, user }) => {
         </div>
 
         <div className="edit_profile_box_form_field">
-          <label htmlFor="bio">Bio</label>
+          <label htmlFor="bio">{t("profile.bioLabel")}</label>
           <textarea
             name="bio"
             id="bio"
@@ -123,7 +125,7 @@ const EditProfileBox = ({ setShowEditProfile, user }) => {
           type="submit"
           disabled={isSubmitting}
         >
-          {isSubmitting ? <Loading size={"1rem"} /> : "Save"}
+          {isSubmitting ? <Loading size={"1rem"} /> : t("profile.save")}
         </button>
       </form>
     </motion.div>

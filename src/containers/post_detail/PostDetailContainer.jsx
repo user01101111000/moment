@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import CommentPublishers from "../../components/post_detail/CommentPublishers/CommentPublishers";
 
 const PostDetailContainer = ({ post, comments, commentPublishers }) => {
+
   const [showCommentPublishers, setShowCommentPublishers] = useState(false);
   const { t } = useTranslation();
   const { userInfo } = useSelector((state) => state.userInfo);

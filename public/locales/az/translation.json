@@ -26,7 +26,12 @@
     "createdAccount": "Hesab yaradıldı."
   },
   "profile": {
-    "editProfile": "Profili redaktə et"
+    "editProfile": "Profili redaktə et",
+    "changeAvatar": "Şəkil yüklə",
+    "firstNameLabel": "Ad",
+    "lastNameLabel": "Soyad",
+    "bioLabel": "Bioqrafiya ",
+    "save": "Yadda saxla"
   },
   "time": {
     "lessThanAMinuteAgo": "indicə",
