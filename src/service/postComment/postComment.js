@@ -1,3 +1,4 @@
+import { string } from "yup";
 import { getAxiosCommentsInstance, getAxiosInstance } from "../axios_instance";
 import { v4 } from "uuid";
 
@@ -25,17 +26,7 @@ async function postComment({ postID, comment, latestCommentCount }) {
         stringValue: new Date().getTime() + "",
       },
       publisher: {
-        mapValue: {
-          fields: {
-            avatar: { stringValue: comment.avatar },
-            email: { stringValue: comment.email },
-            id: { stringValue: comment.id },
-            username: { stringValue: comment.username },
-            firstName: { stringValue: comment.firstName },
-            lastName: { stringValue: comment.lastName },
-            gender: { stringValue: comment.gender },
-          },
-        },
+        stringValue: comment.id,
       },
     },
   };

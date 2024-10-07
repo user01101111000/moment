@@ -5,38 +5,57 @@ import { AiFillDislike } from "react-icons/ai";
 import timeConverter from "@/utils/timeConverter";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useGetAnyUserInfoQuery from "../../../hooks/api/useGetAnyUserInfoQuery";
+import Skeleton from "../../ui/Skeleton/Skeleton";
 
 const Comment = ({ comment }) => {
   const navigate = useNavigate();
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
 
+  const { data: user, isLoading } = useGetAnyUserInfoQuery(
+    comment.publisher.stringValue
+  );
+  if (isLoading)
+    return (
+      <div className="post">
+        <figure>
+          <Skeleton width="100%" height="3rem" borderRadius="50%" />
+        </figure>
+
+        <div className="post_main">
+          <div className="name_area">
+            <Skeleton width="100%" height="1rem" borderRadius="4px" />
+
+            <p>|</p>
+
+            <Skeleton width="100%" height="1rem" borderRadius="4px" />
+          </div>
+
+          <Skeleton width="100%" height="1rem" borderRadius="4px" />
+        </div>
+      </div>
+    );
+
   return (
     <div className="post">
       <figure
         className="avatar"
         onClick={() => {
-          navigate(
-            `/@${comment.publisher.mapValue.fields.username.stringValue}`
-          );
+          navigate(`/@${user.username.stringValue}`);
         }}
       >
-        <img
-          src={comment.publisher.mapValue.fields.avatar.stringValue}
-          alt={comment.publisher.mapValue.fields.username.stringValue}
-        />
+        <img src={user.avatar.stringValue} alt={user.username.stringValue} />
       </figure>
       <div className="post_main">
         <div className="name_area">
           <h3
             className="username"
             onClick={() => {
-              navigate(
-                `/@${comment.publisher.mapValue.fields.username.stringValue}`
-              );
+              navigate(`/@${user.username.stringValue}`);
             }}
           >
-            {comment.publisher.mapValue.fields.username.stringValue}
+            {user.username.stringValue}
           </h3>
           <p className="name_divider">|</p>
           <p className="post_time">

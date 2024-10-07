@@ -104,3 +104,9 @@
   transition: all 0.2s ease-in-out;
   background-color: white;
 }
+
+.edit_profile_box_error {
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 700;
+}

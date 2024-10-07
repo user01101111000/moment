@@ -22,17 +22,7 @@ async function addPost(post) {
         stringValue: new Date().getTime() + "",
       },
       publisher: {
-        mapValue: {
-          fields: {
-            avatar: { stringValue: post.avatar },
-            email: { stringValue: post.email },
-            id: { stringValue: post.id },
-            username: { stringValue: post.username },
-            firstName: { stringValue: post.firstName },
-            lastName: { stringValue: post.lastName },
-            gender: { stringValue: post.gender },
-          },
-        },
+        stringValue: post.id,
       },
     },
   };

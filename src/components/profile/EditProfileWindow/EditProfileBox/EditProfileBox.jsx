@@ -3,8 +3,11 @@ import { motion } from "framer-motion";
 import { isObject, useFormik } from "formik";
 import Loading from "../../../ui/Loading";
 import { editProfileSchema } from "../../../../utils/schema";
+import useUpdateUserInfoMutation from "../../../../hooks/api/useUpdateUserInfoMutation";
 
 const EditProfileBox = ({ setShowEditProfile, user }) => {
+  const { mutateAsync } = useUpdateUserInfoMutation();
+
   const {
     values,
     handleChange,
@@ -26,12 +29,10 @@ const EditProfileBox = ({ setShowEditProfile, user }) => {
     validationSchema: editProfileSchema,
   });
 
-  function onSubmit(values) {
-    setTimeout(() => {
-      console.log(values);
-      setShowEditProfile(false);
-      resetForm();
-    }, 2000);
+  async function onSubmit(values) {
+    await mutateAsync({ id: user.id, userInfo: values });
+    setShowEditProfile(false);
+    resetForm();
   }
 
   return (
@@ -41,14 +42,16 @@ const EditProfileBox = ({ setShowEditProfile, user }) => {
       exit={{ opacity: 0 }}
       className="edit_profile_box"
     >
-      <div className="edit_profile_box_header">
-        <h1
-          className="edit_profile_box_close"
-          onClick={() => setShowEditProfile(false)}
-        >
-          x
-        </h1>
-      </div>
+      {!isSubmitting && (
+        <div className="edit_profile_box_header">
+          <h1
+            className="edit_profile_box_close"
+            onClick={() => setShowEditProfile(false)}
+          >
+            x
+          </h1>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="edit_profile_box_form">
         <div className="edit_profile_box_form_avatar">
@@ -84,7 +87,9 @@ const EditProfileBox = ({ setShowEditProfile, user }) => {
             onChange={handleChange}
             value={values.firstName}
           />
-          {errors.firstName && <p>{errors.firstName}</p>}
+          {errors.firstName && (
+            <p className="edit_profile_box_error">{errors.firstName}</p>
+          )}
         </div>
 
         <div className="edit_profile_box_form_field">
@@ -96,7 +101,9 @@ const EditProfileBox = ({ setShowEditProfile, user }) => {
             onChange={handleChange}
             value={values.lastName}
           />
-          {errors.lastName && <p>{errors.lastName}</p>}
+          {errors.lastName && (
+            <p className="edit_profile_box_error">{errors.lastName}</p>
+          )}
         </div>
 
         <div className="edit_profile_box_form_field">

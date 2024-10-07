@@ -5,7 +5,7 @@ const passwordRegEx =
 
 const emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
-const usernameRegEx = /^[a-zA-Z0-9]+$/;
+const usernameRegEx = /^[a-zA-Z0-9_]+$/;
 
 const nameRegEx = /^[a-zA-Z]+$/;
 
@@ -68,11 +68,13 @@ const editProfileSchema = yup.object().shape({
   firstName: yup
     .string()
     .min(3, "First name must be at least 3 characters.")
-    .matches(nameRegEx, "Invalid first name."),
+    .matches(nameRegEx, "Invalid first name.")
+    .required("First name is required."),
   lastName: yup
     .string()
     .min(3, "Last name must be at least 3 characters.")
-    .matches(nameRegEx, "Invalid last name."),
+    .matches(nameRegEx, "Invalid last name.")
+    .required("Last name is required."),
   bio: yup.string(),
   avatar: yup
     .mixed()

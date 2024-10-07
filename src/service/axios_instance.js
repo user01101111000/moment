@@ -56,6 +56,14 @@ const getAxiosUserInfoInstance = () =>
     }`,
   });
 
+const getAxiosStorageInstance = () => {
+  return axios.create({
+    baseURL: `https://firebasestorage.googleapis.com/v0/b/${
+      import.meta.env.VITE_PROJECT_ID
+    }.appspot.com/o`,
+  });
+};
+
 export {
   getAxiosInstance,
   getAxiosCommentsInstance,
@@ -65,4 +73,5 @@ export {
   getAxiosRefreshTokenInstance,
   getAxiosUserInfoInstance,
   getAxiosLikesInstance,
+  getAxiosStorageInstance,
 };

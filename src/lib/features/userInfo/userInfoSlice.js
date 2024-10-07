@@ -18,11 +18,19 @@ const userInfoSlice = createSlice({
         id: userData.id.stringValue,
         gender: userData.gender.stringValue,
         avatar: userData.avatar.stringValue,
+        bio: userData.bio.stringValue,
+      };
+    },
+
+    updateUserPartInfo: (state, action) => {
+      state.userInfo = {
+        ...state.userInfo,
+        ...action.payload,
       };
     },
   },
 });
 
-export const { setUserInfo } = userInfoSlice.actions;
+export const { setUserInfo, updateUserPartInfo } = userInfoSlice.actions;
 
 export default userInfoSlice.reducer;
