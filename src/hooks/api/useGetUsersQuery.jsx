@@ -7,6 +7,7 @@ const useGetUsersQuery = (trueUser) => {
     queryFn: getUsers,
     retry: 1,
     enabled: trueUser,
+    refetchIntervalInBackground: true,
     //    refetchInterval: 10000,
   });
 };

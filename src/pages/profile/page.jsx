@@ -31,6 +31,8 @@ const Profile = () => {
     id: findedUser?.id?.stringValue,
     gender: findedUser?.gender?.stringValue,
     avatar: findedUser?.avatar?.stringValue,
+    bio: findedUser?.bio?.stringValue,
+    verified: findedUser?.verified?.stringValue,
   };
 
   return (

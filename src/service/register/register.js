@@ -38,6 +38,9 @@ async function register(userInfo) {
       bio: {
         stringValue: "No bio yet.",
       },
+      verified: {
+        stringValue: "false",
+      },
       gender: {
         stringValue: userInfo.gender,
       },

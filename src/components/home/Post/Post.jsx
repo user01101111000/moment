@@ -14,21 +14,29 @@ import { useTranslation } from "react-i18next";
 import translateTime from "../../../utils/translateTime";
 import useGetAnyUserInfoQuery from "../../../hooks/api/useGetAnyUserInfoQuery";
 import Skeleton from "../../ui/Skeleton/Skeleton";
+import { useSelector } from "react-redux";
 
 const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
   const { t } = useTranslation();
+  const { userInfo } = useSelector((state) => state.userInfo);
   const [showShareMenu, setShowShareMenu] = useState(false);
-  const { mutateAsync: postLike } = useAddPostLikeMutation();
+  const { mutateAsync: postLike } = useAddPostLikeMutation(post.id.stringValue);
   const navigate = useNavigate();
-  const [liked, setLiked] = useState(false);
+
+  const likeSituation = post?.likers?.arrayValue?.values?.some(
+    (x) => x.stringValue == userInfo.id
+  );
+
+  const [liked, setLiked] = useState(Boolean(likeSituation));
   const [likeCount, setLikeCount] = useState(+post.likeCount.stringValue);
 
   const throttledLike = useCallback(
-    throttle(async ({ action }) => {
-      console.log(likeCount, "likeCount");
+    throttle(async ({ action, likers, likeCount }) => {
       await postLike({
         postID: post.id.stringValue,
-        totalLikeCount: likeCount + +action,
+        totalLikeCount: action ? +likeCount + 1 : +likeCount - 1,
+        likers: likers,
+        liker: userInfo.id,
         action: action,
       });
     }, 2000),
@@ -100,7 +108,11 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
                 onClick={() => {
                   setLiked((prev) => !prev);
                   setLikeCount((prev) => prev - 1);
-                  throttledLike({ action: false });
+                  throttledLike({
+                    action: false,
+                    likers: post?.likers?.arrayValue?.values || [],
+                    likeCount: post.likeCount.stringValue,
+                  });
                 }}
               />
             ) : (
@@ -109,7 +121,11 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
                 onClick={() => {
                   setLiked((prev) => !prev);
                   setLikeCount((prev) => prev + 1);
-                  throttledLike({ action: true });
+                  throttledLike({
+                    action: true,
+                    likers: post?.likers?.arrayValue?.values || [],
+                    likeCount: post.likeCount.stringValue,
+                  });
                 }}
               />
             )}

@@ -6,7 +6,7 @@ const useGetPostsQuery = () => {
     queryKey: ["posts"],
     queryFn: getPosts,
     retry: 1,
-
+    refetchIntervalInBackground: true,
   });
 };
 

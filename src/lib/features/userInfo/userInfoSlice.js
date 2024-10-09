@@ -19,6 +19,7 @@ const userInfoSlice = createSlice({
         gender: userData.gender.stringValue,
         avatar: userData.avatar.stringValue,
         bio: userData.bio.stringValue,
+        verified: userData.verified.stringValue,
       };
     },
 

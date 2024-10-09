@@ -6,7 +6,7 @@ const useAddPostMutation = () => {
   return useMutation({
     mutationFn: addPost,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["posts"] });
+      queryClient.refetchQueries({ queryKey: ["posts"] });
     },
   });
 };

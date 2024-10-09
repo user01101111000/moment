@@ -1,9 +1,9 @@
 import { getAxiosInstance } from "../axios_instance";
 
-async function postLike({ postID, totalLikeCount, action }) {
-  // const newLikers = action
-  //   ? likers
-  //   : likers.filter((x) => x.mapValue?.fields?.id?.stringValue !== liker.id);
+async function postLike({ postID, totalLikeCount, likers, liker, action }) {
+  const newLikers = action
+    ? [...likers, { stringValue: liker }]
+    : likers.filter((x) => x?.stringValue !== liker);
 
   const likeData = {
     fields: {
@@ -13,40 +13,15 @@ async function postLike({ postID, totalLikeCount, action }) {
     },
   };
 
-  // const unlikeDataBody = {
-  //   fields: {
-  //     likers: {
-  //       arrayValue: {
-  //         values: newLikers,
-  //       },
-  //     },
-  //   },
-  // };
-
-  // const likeDataBody = {
-  //   fields: {
-  //     likers: {
-  //       arrayValue: {
-  //         values: [
-  //           ...newLikers,
-  //           {
-  //             mapValue: {
-  //               fields: {
-  //                 avatar: { stringValue: liker.avatar },
-  //                 email: { stringValue: liker.email },
-  //                 id: { stringValue: liker.id },
-  //                 username: { stringValue: liker.username },
-  //                 firstName: { stringValue: liker.firstName },
-  //                 lastName: { stringValue: liker.lastName },
-  //                 gender: { stringValue: liker.gender },
-  //               },
-  //             },
-  //           },
-  //         ],
-  //       },
-  //     },
-  //   },
-  // };
+  const likedData = {
+    fields: {
+      likers: {
+        arrayValue: {
+          values: newLikers,
+        },
+      },
+    },
+  };
 
   await getAxiosInstance().patch("/" + postID, likeData, {
     params: {
@@ -54,15 +29,11 @@ async function postLike({ postID, totalLikeCount, action }) {
     },
   });
 
-  // await getAxiosInstance().patch(
-  //   "/" + postID,
-  //   action ? likeDataBody : unlikeDataBody,
-  //   {
-  //     params: {
-  //       "updateMask.fieldPaths": "likers",
-  //     },
-  //   }
-  // );
+  await getAxiosInstance().patch("/" + postID, likedData, {
+    params: {
+      "updateMask.fieldPaths": "likers",
+    },
+  });
 }
 
 export default postLike;
