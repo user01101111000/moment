@@ -12,13 +12,13 @@ import { useTranslation } from "react-i18next";
 import CommentPublishers from "../../components/post_detail/CommentPublishers/CommentPublishers";
 
 const PostDetailContainer = ({ post, comments, commentPublishers }) => {
-
   const [showCommentPublishers, setShowCommentPublishers] = useState(false);
+  const [showLikers, setShowLikers] = useState(false);
   const { t } = useTranslation();
   const { userInfo } = useSelector((state) => state.userInfo);
   const navigate = useNavigate();
   const [add, setAdd] = useState(false);
-
+  const likers = post.likers.arrayValue.values.map((x) => x.stringValue);
   const { mutateAsync } = useAddCommentMutation(post.id.stringValue);
 
   async function postComment(values) {
@@ -67,7 +67,10 @@ const PostDetailContainer = ({ post, comments, commentPublishers }) => {
       />
 
       <div className="reply_label_area">
-        <h1 className="reply_label">
+        <h1
+          className="reply_label"
+          onClick={() => setShowLikers((prev) => !prev)}
+        >
           {t("post.likes")} ·{" "}
           <span className="reply_count">{post.likeCount.stringValue}</span>
         </h1>
@@ -86,8 +89,19 @@ const PostDetailContainer = ({ post, comments, commentPublishers }) => {
       <AnimatePresence>
         {showCommentPublishers && comments.length && (
           <CommentPublishers
+            label={"post.replies"}
             commentPublishers={commentPublishers}
             setShowCommentPublishers={setShowCommentPublishers}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showLikers && likers.length && (
+          <CommentPublishers
+            label={"post.likes"}
+            commentPublishers={likers}
+            setShowCommentPublishers={setShowLikers}
           />
         )}
       </AnimatePresence>

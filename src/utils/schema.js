@@ -5,7 +5,7 @@ const passwordRegEx =
 
 const emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
-const usernameRegEx = /^[a-zA-Z0-9_]+$/;
+const usernameRegEx = /^[a-zA-Z0-9_.]+$/;
 
 const nameRegEx = /^[a-zA-Z]+$/;
 

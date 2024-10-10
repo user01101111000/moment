@@ -7,8 +7,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useGetAnyUserInfoQuery from "../../../hooks/api/useGetAnyUserInfoQuery";
 import Skeleton from "../../ui/Skeleton/Skeleton";
+import { useTranslation } from "react-i18next";
+import translateTime from "@/utils/translateTime";
 
 const Comment = ({ comment }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
@@ -59,7 +62,9 @@ const Comment = ({ comment }) => {
           </h3>
           <p className="name_divider">|</p>
           <p className="post_time">
-            {timeConverter(+comment.time.stringValue)}
+            {translateTime(timeConverter(+comment.time.stringValue), t).join(
+              " "
+            )}
           </p>
         </div>
         <p className="post_content">{comment.content.stringValue}</p>

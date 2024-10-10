@@ -3,7 +3,11 @@ import CommentPublisher from "./CommentPublisher/CommentPublisher";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-const CommentPublishers = ({ commentPublishers, setShowCommentPublishers }) => {
+const CommentPublishers = ({
+  label,
+  commentPublishers,
+  setShowCommentPublishers,
+}) => {
   const { t } = useTranslation();
 
   const publisherList = commentPublishers.map((x) => (
@@ -24,7 +28,7 @@ const CommentPublishers = ({ commentPublishers, setShowCommentPublishers }) => {
         exit={{ opacity: 0 }}
       >
         <div className="comment_publishers_header">
-          <h1 className="comment_publishers_title">{t("post.replies")}</h1>
+          <h1 className="comment_publishers_title">{t(label)}</h1>
           <h1 onClick={() => setShowCommentPublishers(false)}>x</h1>
         </div>
         {publisherList}
