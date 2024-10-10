@@ -67,13 +67,15 @@ const AddPostBox = ({
             {isSubmitting ? <Loading size={"1rem"} /> : buttonName}
           </button>
 
-          <button
-            onClick={() => setAdd(false)}
-            type="button"
-            className="cancel_button_add_post"
-          >
-            {t("postShareBox.cancel")}
-          </button>
+          {!isSubmitting && (
+            <button
+              onClick={() => setAdd(false)}
+              type="button"
+              className="cancel_button_add_post"
+            >
+              {t("postShareBox.cancel")}
+            </button>
+          )}
         </div>
       </form>
     </motion.article>

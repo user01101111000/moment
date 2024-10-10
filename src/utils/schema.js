@@ -32,37 +32,40 @@ const loginSchema = yup.object().shape({
     .required("Password is required."),
 });
 
-const registerSchema = yup.object().shape({
-  firstName: yup
-    .string()
-    .min(3, "First name must be at least 3 characters.")
-    .matches(nameRegEx, "Invalid first name.")
-    .required("First name is required."),
-  lastName: yup
-    .string()
-    .min(3, "Last name must be at least 3 characters.")
-    .matches(nameRegEx, "Invalid last name.")
-    .required("Last name is required."),
-  username: yup
-    .string()
-    .min(3, "Username must be at least 3 characters.")
-    .matches(usernameRegEx, "Invalid username.")
-    .required("Username is required."),
-  email: yup
-    .string()
-    .email("Invalid email.")
-    .matches(emailRegEx, "Invalid email.")
-    .required("Email is required."),
-  password: yup
-    .string()
-    .min(6, "Password must be at least 6 characters.")
-    .matches(
-      passwordRegEx,
-      "Password must contain at least one uppercase, one lowercase, one number and one special character."
-    )
-    .required("Password is required."),
-  gender: yup.string().required("Gender is required."),
-});
+const registerSchema = (usernames) => {
+  return yup.object().shape({
+    firstName: yup
+      .string()
+      .min(3, "First name must be at least 3 characters.")
+      .matches(nameRegEx, "Invalid first name.")
+      .required("First name is required."),
+    lastName: yup
+      .string()
+      .min(3, "Last name must be at least 3 characters.")
+      .matches(nameRegEx, "Invalid last name.")
+      .required("Last name is required."),
+    username: yup
+      .string()
+      .min(3, "Username must be at least 3 characters.")
+      .matches(usernameRegEx, "Invalid username.")
+      .notOneOf(usernames, "Username is already taken.")
+      .required("Username is required."),
+    email: yup
+      .string()
+      .email("Invalid email.")
+      .matches(emailRegEx, "Invalid email.")
+      .required("Email is required."),
+    password: yup
+      .string()
+      .min(6, "Password must be at least 6 characters.")
+      .matches(
+        passwordRegEx,
+        "Password must contain at least one uppercase, one lowercase, one number and one special character."
+      )
+      .required("Password is required."),
+    gender: yup.string().required("Gender is required."),
+  });
+};
 
 const editProfileSchema = yup.object().shape({
   firstName: yup

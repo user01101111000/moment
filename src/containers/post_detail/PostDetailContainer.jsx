@@ -18,7 +18,7 @@ const PostDetailContainer = ({ post, comments, commentPublishers }) => {
   const { userInfo } = useSelector((state) => state.userInfo);
   const navigate = useNavigate();
   const [add, setAdd] = useState(false);
-  const likers = post.likers.arrayValue.values.map((x) => x.stringValue);
+  const likers = post?.likers?.arrayValue?.values?.map((x) => x?.stringValue) ?? [];
   const { mutateAsync } = useAddCommentMutation(post.id.stringValue);
 
   async function postComment(values) {

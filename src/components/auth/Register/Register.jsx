@@ -8,8 +8,11 @@ import Loading from "../../ui/Loading";
 import { toast, Bounce } from "react-toastify";
 import useRegisterMutation from "../../../hooks/api/useRegisterMutation";
 import { useTranslation } from "react-i18next";
+import useGetUsersQuery from "../../../hooks/api/useGetUsersQuery";
 
 const Register = ({ setShowLogin }) => {
+  const { data } = useGetUsersQuery(true);
+  const usernames = data?.map((x) => x?.fields?.username?.stringValue) ?? [];
   const { t } = useTranslation();
   const { mutateAsync } = useRegisterMutation();
 
@@ -30,7 +33,7 @@ const Register = ({ setShowLogin }) => {
       gender: "male",
     },
     onSubmit,
-    validationSchema: registerSchema,
+    validationSchema: registerSchema(usernames),
   });
 
   const [showPassword, setShowPassword] = useState(false);
