@@ -1,0 +1,11 @@
+.profile_posts_container {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-content: start;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}

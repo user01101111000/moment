@@ -1,4 +1,4 @@
-import { getAxiosInstance } from "../axios_instance";
+import { getAxiosInstance, getAxiosUsersInstance } from "../axios_instance";
 import { v4 } from "uuid";
 
 async function addPost(post) {
@@ -27,7 +27,27 @@ async function addPost(post) {
     },
   };
 
+  const newPostsDatas = [...post.oldPostsIDs, { stringValue: uuid }];
+
+  const userPostsData = {
+    fields: {
+      posts: {
+        arrayValue: {
+          values: newPostsDatas,
+        },
+      },
+    },
+  };
+
   await getAxiosInstance().patch("/" + uuid, postData);
+
+  await getAxiosUsersInstance().patch("/" + post.publisherID, userPostsData, {
+    params: {
+      "updateMask.fieldPaths": "posts",
+    },
+  });
+
+  return newPostsDatas;
 }
 
 export default addPost;

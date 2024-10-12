@@ -39,6 +39,8 @@ const HomeLayout = () => {
     const postData = {
       ...userInfo,
       content: values.content,
+      publisherID: userInfo.id,
+      oldPostsIDs: userInfo?.posts ?? [],
     };
 
     await mutateAsync(postData);

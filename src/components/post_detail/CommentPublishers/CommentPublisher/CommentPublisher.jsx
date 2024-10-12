@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import useGetAnyUserInfoQuery from "../../../../hooks/api/useGetAnyUserInfoQuery";
 import Skeleton from "../../../ui/Skeleton/Skeleton";
+import { MdVerified } from "react-icons/md";
 
 const CommentPublisher = ({ publisher }) => {
   const { t } = useTranslation();
@@ -38,9 +39,13 @@ const CommentPublisher = ({ publisher }) => {
         </figure>
 
         <div className="comment_publisher_info">
-          <h1>
-            {user.firstName.stringValue + " " + user.lastName.stringValue}
-          </h1>
+          <div className="comment_publisher_username_area">
+            <h1>
+              {user.firstName.stringValue + " " + user.lastName.stringValue}
+            </h1>
+
+            {user.verified.stringValue == "true" && <MdVerified />}
+          </div>
           <p>@{user.username.stringValue}</p>
         </div>
       </div>

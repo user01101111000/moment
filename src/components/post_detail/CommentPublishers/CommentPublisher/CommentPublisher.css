@@ -32,6 +32,12 @@
   gap: 0.3rem;
 }
 
+.comment_publisher_username_area {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .comment_publisher_info h1 {
   font-size: 1rem;
   font-weight: 600;

@@ -48,6 +48,11 @@ async function register(userInfo) {
         stringValue:
           "https://firebasestorage.googleapis.com/v0/b/moment-c8183.appspot.com/o/common%2Fpp.png?alt=media&token=4d85b22c-df4a-48d5-952f-32c6bd1406d7",
       },
+      posts: {
+        arrayValue: {
+          values: [],
+        },
+      },
     },
   };
 

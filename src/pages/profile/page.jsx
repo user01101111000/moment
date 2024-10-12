@@ -33,6 +33,7 @@ const Profile = () => {
     avatar: findedUser?.avatar?.stringValue,
     bio: findedUser?.bio?.stringValue,
     verified: findedUser?.verified?.stringValue,
+    posts: findedUser?.posts?.arrayValue?.values,
   };
 
   return (

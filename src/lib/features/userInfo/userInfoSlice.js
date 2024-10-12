@@ -20,6 +20,7 @@ const userInfoSlice = createSlice({
         avatar: userData.avatar.stringValue,
         bio: userData.bio.stringValue,
         verified: userData.verified.stringValue,
+        posts: userData.posts.arrayValue.values,
       };
     },
 
@@ -29,9 +30,17 @@ const userInfoSlice = createSlice({
         ...action.payload,
       };
     },
+
+    setPostsDataInfo: (state, action) => {
+      state.userInfo = {
+        ...state.userInfo,
+        posts: action.payload,
+      };
+    },
   },
 });
 
-export const { setUserInfo, updateUserPartInfo } = userInfoSlice.actions;
+export const { setUserInfo, updateUserPartInfo, setPostsDataInfo } =
+  userInfoSlice.actions;
 
 export default userInfoSlice.reducer;

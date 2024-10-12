@@ -9,6 +9,7 @@ import useGetAnyUserInfoQuery from "../../../hooks/api/useGetAnyUserInfoQuery";
 import Skeleton from "../../ui/Skeleton/Skeleton";
 import { useTranslation } from "react-i18next";
 import translateTime from "@/utils/translateTime";
+import { MdVerified } from "react-icons/md";
 
 const Comment = ({ comment }) => {
   const { t } = useTranslation();
@@ -60,6 +61,9 @@ const Comment = ({ comment }) => {
           >
             {user.username.stringValue}
           </h3>
+
+          {user.verified.stringValue == "true" && <MdVerified />}
+
           <p className="name_divider">|</p>
           <p className="post_time">
             {translateTime(timeConverter(+comment.time.stringValue), t).join(

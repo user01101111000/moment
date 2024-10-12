@@ -15,6 +15,7 @@ import translateTime from "../../../utils/translateTime";
 import useGetAnyUserInfoQuery from "../../../hooks/api/useGetAnyUserInfoQuery";
 import Skeleton from "../../ui/Skeleton/Skeleton";
 import { useSelector } from "react-redux";
+import { MdVerified } from "react-icons/md";
 
 const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
   const { t } = useTranslation();
@@ -88,6 +89,8 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
           >
             {user.username.stringValue}
           </h3>
+
+          {user.verified.stringValue == "true" && <MdVerified />}
           <p className="name_divider">|</p>
           <p className="post_time">
             {translateTime(timeConverter(+post.time.stringValue), t).join(" ")}

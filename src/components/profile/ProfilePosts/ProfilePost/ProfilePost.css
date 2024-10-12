@@ -1,0 +1,96 @@
+.profile_post {
+  height: 12rem;
+  min-width: 12rem;
+  flex: 1;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile_post:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.profile_post_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile_post_name_area {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.7rem;
+}
+
+.profile_post_name_area h1 {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.profile_post_avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+
+  flex-shrink: 0;
+}
+
+.profile_post_avatar img {
+  width: 100%;
+  height: 100%;
+}
+.profile_post_name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.profile_post_verified {
+  flex-shrink: 0;
+}
+
+.profile_post_content {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.profile_post_buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  gap: 0.5rem;
+}
+
+.profile_post_button {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  transition: all 0.2s ease-in-out;
+}
+.profile_post_button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.profile_post_buttons_link_icon {
+  font-size: 1.2rem;
+}
+
+.profile_post_buttons_link_icon_trash {
+  color: #ff2b28;
+}

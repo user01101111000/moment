@@ -3,8 +3,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import EditProfileWindow from "../../components/profile/EditProfileWindow/EditProfileWindow";
+import { MdVerified } from "react-icons/md";
+import ProfilePosts from "../../components/profile/ProfilePosts/ProfilePosts";
 
 const ProfileContainer = ({ user, trueUser }) => {
+  console.log(user);
   const [previewAvatar, setPreviewAvatar] = useState(false);
   const [showEditProfile, setShowEditProfile] = useState(false);
 
@@ -17,9 +20,15 @@ const ProfileContainer = ({ user, trueUser }) => {
     >
       <div className="profile_container_userInfo">
         <div className="profile_container_userInfo_title">
-          <h1 className="profile_container_userInfo_name">
-            {user.firstName + " " + user.lastName}
-          </h1>
+          <div className="profile_container_userInfo_name_area">
+            <h1 className="profile_container_userInfo_name">
+              {user.firstName + " " + user.lastName}{" "}
+            </h1>
+            {user.verified == "true" && (
+              <MdVerified className="profile_container_userInfo_verified" />
+            )}
+          </div>
+
           <p className="profile_container_userInfo_username">
             {"@" + user.username}
           </p>
@@ -46,6 +55,9 @@ const ProfileContainer = ({ user, trueUser }) => {
         </div>
       )}
 
+      <hr className="divider" />
+
+      {user?.posts?.length ? <ProfilePosts posts={user?.posts} user={user} trueUser={trueUser} /> : <h1 className="profile_container_no_posts">No posts yet.</h1>}
       <AnimatePresence>
         {showEditProfile && (
           <EditProfileWindow
