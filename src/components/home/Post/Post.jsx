@@ -64,7 +64,7 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
             <Skeleton width="100%" height="1rem" borderRadius="4px" />
           </div>
 
-          <Skeleton width="100%" height="1rem" borderRadius="4px" />
+          <Skeleton width="100%" height="3rem" borderRadius="4px" />
         </div>
       </div>
     );

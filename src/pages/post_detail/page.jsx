@@ -13,9 +13,7 @@ const PostDetail = () => {
 
   if (isError) return <div>Error: {error.message}</div>;
 
-  const currentPost = data[0]
-    .map((x) => x.fields)
-    .find((x) => x.id.stringValue == id);
+  const currentPost = data[0].fields;
 
   const comments = timeSorter(data[1] ?? [])?.map((x) => x?.fields) ?? [];
 

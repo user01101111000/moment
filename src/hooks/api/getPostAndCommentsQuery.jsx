@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import getPosts from "../../service/getPosts/getPosts";
+import getOnePost from "../../service/getOnePost/getOnePost";
 import getComments from "../../service/getComments/getComments";
 
 const useGetPostAndCommentsQuery = (id) => {
@@ -7,7 +7,7 @@ const useGetPostAndCommentsQuery = (id) => {
     queryKey: ["postsAndComments", id],
     refetchIntervalInBackground: true,
     queryFn: async () => {
-      const data = await Promise.all([getPosts(), getComments(id)]);
+      const data = await Promise.all([getOnePost(id), getComments(id)]);
 
       return data;
     },

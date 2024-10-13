@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 const useAddPostMutation = () => {
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: addPost,
     onSuccess: (data) => {

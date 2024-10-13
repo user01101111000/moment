@@ -24,6 +24,7 @@ async function addPost(post) {
       publisher: {
         stringValue: post.id,
       },
+      createdAt: { timestampValue: new Date().toISOString() },
     },
   };
 

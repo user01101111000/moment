@@ -1,13 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import getPosts from "../../service/getPosts/getPosts";
 
-const useGetPostsQuery = () => {
-  return useQuery({
+const useGetInifiedPostsQuery = () => {
+  return useInfiniteQuery({
     queryKey: ["posts"],
     queryFn: getPosts,
-    retry: 1,
-    refetchIntervalInBackground: true,
+    getNextPageParam: (lastPage) => {
+      return lastPage?.nextPageToken;
+    },
   });
 };
 
-export default useGetPostsQuery;
+export default useGetInifiedPostsQuery;
