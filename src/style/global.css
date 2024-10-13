@@ -18,6 +18,28 @@
   color: white;
 }
 
+.swal2Popup {
+  background-color: #181818;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 15px;
+}
+
+.swal2Popup .swal2-title,
+.swal2Popup .swal2-content {
+  color: white !important;
+}
+
+.swal2Popup .swal2-styled.swal2-confirm {
+  background-color: #181818 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+.swal2-popup {
+  font-size: 1rem !important;
+  font-family: "Geist", sans-serif;
+}
+
 @media screen and (max-width: 1440px) {
   html {
     font-size: 16px !important;
@@ -39,5 +61,11 @@
 @media screen and (max-width: 1240px) {
   html {
     font-size: 13px !important;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  html {
+    font-size: 10px !important;
   }
 }

@@ -13,6 +13,7 @@ const postSchema = yup.object().shape({
   content: yup
     .string()
     .min(2, "Content must be at least 3 characters.")
+    .max(500, "Content must be at most 500 characters.")
     .required("Content is required."),
 });
 
@@ -37,16 +38,19 @@ const registerSchema = (usernames) => {
     firstName: yup
       .string()
       .min(3, "First name must be at least 3 characters.")
+      .max(15, "First name must be at most 15 characters.")
       .matches(nameRegEx, "Invalid first name.")
       .required("First name is required."),
     lastName: yup
       .string()
       .min(3, "Last name must be at least 3 characters.")
+      .max(15, "Last name must be at most 15 characters.")
       .matches(nameRegEx, "Invalid last name.")
       .required("Last name is required."),
     username: yup
       .string()
       .min(3, "Username must be at least 3 characters.")
+      .max(10, "Username must be at most 10 characters.")
       .matches(usernameRegEx, "Invalid username.")
       .notOneOf(usernames, "Username is already taken.")
       .required("Username is required."),
@@ -71,14 +75,16 @@ const editProfileSchema = yup.object().shape({
   firstName: yup
     .string()
     .min(3, "First name must be at least 3 characters.")
+    .max(15, "First name must be at most 15 characters.")
     .matches(nameRegEx, "Invalid first name.")
     .required("First name is required."),
   lastName: yup
     .string()
     .min(3, "Last name must be at least 3 characters.")
+    .max(15, "Last name must be at most 15 characters.")
     .matches(nameRegEx, "Invalid last name.")
     .required("Last name is required."),
-  bio: yup.string(),
+  bio: yup.string().max(100, "Bio must be at most 100 characters."),
   avatar: yup
     .mixed()
     .test("required", "File is required", (value) => value !== ""),

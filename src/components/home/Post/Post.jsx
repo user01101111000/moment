@@ -90,7 +90,9 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
             {user.username.stringValue}
           </h3>
 
-          {user.verified.stringValue == "true" && <MdVerified />}
+          {user.verified.stringValue == "true" && (
+            <MdVerified className="verified_post" />
+          )}
           <p className="name_divider">|</p>
           <p className="post_time">
             {translateTime(timeConverter(+post.time.stringValue), t).join(" ")}

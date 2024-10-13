@@ -6,8 +6,14 @@ import { LuExternalLink } from "react-icons/lu";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import DeletePostWindow from "../../DeletePostWindow/DeletePostWindow";
+
 const ProfilePost = ({ postID, user, trueUser }) => {
   const navigate = useNavigate();
+  const [showDeleteWindow, setShowDeleteWindow] = useState(false);
+
   const { data, isLoading } = useGetOnePostQuery(postID);
 
   if (isLoading)
@@ -46,11 +52,24 @@ const ProfilePost = ({ postID, user, trueUser }) => {
         </div>
 
         {trueUser && (
-          <div className="profile_post_buttons_delete profile_post_button">
+          <div
+            className="profile_post_buttons_delete profile_post_button"
+            onClick={() => setShowDeleteWindow(true)}
+          >
             <MdDelete className="profile_post_buttons_link_icon profile_post_buttons_link_icon_trash" />
           </div>
         )}
       </div>
+
+      <AnimatePresence>
+        {showDeleteWindow && (
+          <DeletePostWindow
+            setShowDeleteWindow={setShowDeleteWindow}
+            postID={postID}
+            user={user}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

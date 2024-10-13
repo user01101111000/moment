@@ -65,9 +65,11 @@ const EditProfileBox = ({ setShowEditProfile, user }) => {
             )}
           </figure>
 
-          <label className="custom_file_input" htmlFor="avatar">
-            {t("profile.changeAvatar")}
-          </label>
+          {!isSubmitting && (
+            <label className="custom_file_input" htmlFor="avatar">
+              {t("profile.changeAvatar")}
+            </label>
+          )}
 
           <input
             style={{ display: "none" }}
@@ -121,7 +123,9 @@ const EditProfileBox = ({ setShowEditProfile, user }) => {
         </div>
 
         <button
-          className="edit_profile_box_form_button"
+          className={`edit_profile_box_form_button${
+            isSubmitting ? " submitting" : ""
+          }`}
           type="submit"
           disabled={isSubmitting}
         >

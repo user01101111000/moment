@@ -20,7 +20,7 @@ const userInfoSlice = createSlice({
         avatar: userData.avatar.stringValue,
         bio: userData.bio.stringValue,
         verified: userData.verified.stringValue,
-        posts: userData.posts.arrayValue.values,
+        posts: userData?.posts?.arrayValue?.values ?? [],
       };
     },
 

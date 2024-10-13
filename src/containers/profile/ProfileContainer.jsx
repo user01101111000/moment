@@ -7,7 +7,6 @@ import { MdVerified } from "react-icons/md";
 import ProfilePosts from "../../components/profile/ProfilePosts/ProfilePosts";
 
 const ProfileContainer = ({ user, trueUser }) => {
-  console.log(user);
   const [previewAvatar, setPreviewAvatar] = useState(false);
   const [showEditProfile, setShowEditProfile] = useState(false);
 
@@ -57,7 +56,11 @@ const ProfileContainer = ({ user, trueUser }) => {
 
       <hr className="divider" />
 
-      {user?.posts?.length ? <ProfilePosts posts={user?.posts} user={user} trueUser={trueUser} /> : <h1 className="profile_container_no_posts">No posts yet.</h1>}
+      {user?.posts?.length ? (
+        <ProfilePosts posts={user?.posts} user={user} trueUser={trueUser} />
+      ) : (
+        <h1 className="profile_container_no_posts">No posts yet.</h1>
+      )}
       <AnimatePresence>
         {showEditProfile && (
           <EditProfileWindow

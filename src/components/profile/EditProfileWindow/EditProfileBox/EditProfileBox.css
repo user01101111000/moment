@@ -110,3 +110,8 @@
   font-size: 0.8rem;
   font-weight: 700;
 }
+.submitting {
+  pointer-events: none !important;
+  user-select: none !important;
+  opacity: 0.5 !important;
+}
