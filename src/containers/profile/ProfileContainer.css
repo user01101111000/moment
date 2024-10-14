@@ -74,10 +74,8 @@
   white-space: nowrap;
 }
 
-.profile_container_userInfo_title profile_container_userInfo_bio {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: scroll;
+.profile_container_userInfo_title .profile_container_userInfo_bio {
+  line-height: 1.5;
 }
 
 .profile_container_edit_area {

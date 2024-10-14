@@ -3,21 +3,21 @@ import Select from "react-select";
 import { useTranslation } from "react-i18next";
 
 const LanguageSelect = () => {
-  const { t, i18n } = useTranslation();
+  const options = [
+    { value: "en", label: "English" },
+    { value: "az", label: "Azerbaijani" },
+  ];
+
+  const { i18n } = useTranslation();
 
   const [selectedOption, setSelectedOption] = useState({
-    value: i18n.language,
-    label: t(`language.${i18n.language}`),
+    value: ["en", "az"].includes(i18n.language) ? i18n.language : "en",
+    label: "English",
   });
 
   useEffect(() => {
     i18n.changeLanguage(selectedOption.value);
   }, [selectedOption.value]);
-
-  const options = [
-    { value: "en", label: t("language.english") },
-    { value: "az", label: t("language.azerbaijani") },
-  ];
 
   return (
     <div>

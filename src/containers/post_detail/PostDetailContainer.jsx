@@ -18,7 +18,8 @@ const PostDetailContainer = ({ post, comments, commentPublishers }) => {
   const { userInfo } = useSelector((state) => state.userInfo);
   const navigate = useNavigate();
   const [add, setAdd] = useState(false);
-  const likers = post?.likers?.arrayValue?.values?.map((x) => x?.stringValue) ?? [];
+  const likers =
+    post?.likers?.arrayValue?.values?.map((x) => x?.stringValue) ?? [];
   const { mutateAsync } = useAddCommentMutation(post.id.stringValue);
 
   async function postComment(values) {
@@ -55,7 +56,7 @@ const PostDetailContainer = ({ post, comments, commentPublishers }) => {
       <div className="post_detail_header">
         <IoArrowBack
           className="post_detail_back_icon"
-          onClick={() => navigate("/")}
+          onClick={() => navigate(-1)}
         />
       </div>
 

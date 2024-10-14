@@ -55,6 +55,7 @@
 
 .edit_profile_box_form_field #bio {
   resize: none;
+  line-height: 1.5;
 }
 
 .edit_profile_box_form_button {

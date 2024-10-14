@@ -9,16 +9,18 @@ import { FaLink } from "react-icons/fa6";
 import { throttle } from "lodash";
 import { useNavigate } from "react-router-dom";
 import useAddPostLikeMutation from "../../../hooks/api/useAddPostLikeMutation";
-import { motion } from "framer-motion";
+import { invariant, inView, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import translateTime from "../../../utils/translateTime";
 import useGetAnyUserInfoQuery from "../../../hooks/api/useGetAnyUserInfoQuery";
 import Skeleton from "../../ui/Skeleton/Skeleton";
 import { useSelector } from "react-redux";
 import { MdVerified } from "react-icons/md";
+import { useInView } from "react-intersection-observer";
 
 const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
   const { t } = useTranslation();
+  const { ref, inView } = useInView();
   const { userInfo } = useSelector((state) => state.userInfo);
   const [showShareMenu, setShowShareMenu] = useState(false);
   const { mutateAsync: postLike } = useAddPostLikeMutation(post.id.stringValue);
@@ -30,6 +32,12 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
 
   const [liked, setLiked] = useState(Boolean(likeSituation));
   const [likeCount, setLikeCount] = useState(+post.likeCount.stringValue);
+
+  useEffect(() => {
+    if (!inView) {
+      setShowShareMenu(false);
+    }
+  }, [inView]);
 
   const throttledLike = useCallback(
     throttle(async ({ action, likers, likeCount }) => {
@@ -150,7 +158,7 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
             <p className="comments_count">{post.commentCount.stringValue}</p>
           </div>
 
-          <div className="share_label">
+          <div className="share_label" ref={ref}>
             <PiTelegramLogo
               className="post_button_icon"
               onClick={() => setShowShareMenu((prev) => !prev)}
