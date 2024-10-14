@@ -1,5 +1,5 @@
 import "./Post.css";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
@@ -9,7 +9,7 @@ import { FaLink } from "react-icons/fa6";
 import { throttle } from "lodash";
 import { useNavigate } from "react-router-dom";
 import useAddPostLikeMutation from "../../../hooks/api/useAddPostLikeMutation";
-import { invariant, inView, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import translateTime from "../../../utils/translateTime";
 import useGetAnyUserInfoQuery from "../../../hooks/api/useGetAnyUserInfoQuery";
@@ -19,6 +19,7 @@ import { MdVerified } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 
 const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
+  const menuRef = useRef(null);
   const { t } = useTranslation();
   const { ref, inView } = useInView();
   const { userInfo } = useSelector((state) => state.userInfo);
@@ -32,6 +33,21 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
 
   const [liked, setLiked] = useState(Boolean(likeSituation));
   const [likeCount, setLikeCount] = useState(+post.likeCount.stringValue);
+
+  console.log(showShareMenu);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowShareMenu(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     if (!inView) {
@@ -161,7 +177,10 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
           <div className="share_label" ref={ref}>
             <PiTelegramLogo
               className="post_button_icon"
-              onClick={() => setShowShareMenu((prev) => !prev)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowShareMenu((prev) => !prev);
+              }}
             />
 
             {showShareMenu && (
@@ -169,6 +188,7 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="share_menu"
+                ref={menuRef}
               >
                 <div
                   className="share_choice"
