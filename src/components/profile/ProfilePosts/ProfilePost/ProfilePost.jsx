@@ -5,16 +5,26 @@ import { MdVerified } from "react-icons/md";
 import { LuExternalLink } from "react-icons/lu";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import DeletePostWindow from "../../DeletePostWindow/DeletePostWindow";
+import Skeleton from "../../../ui/Skeleton/Skeleton";
 
 const ProfilePost = ({ postID, user, trueUser }) => {
   const navigate = useNavigate();
   const [showDeleteWindow, setShowDeleteWindow] = useState(false);
-
+  const [showImage, setShowImage] = useState(false);
   const { data, isLoading } = useGetOnePostQuery(postID);
+
+  useEffect(() => {
+    const img = new Image();
+
+    img.src = user?.avatar;
+
+    img.onload = () => {
+      setShowImage(true);
+    };
+  }, [user?.avatar]);
 
   if (isLoading)
     return (
@@ -27,7 +37,11 @@ const ProfilePost = ({ postID, user, trueUser }) => {
     <div className="profile_post">
       <div className="profile_post_name_area">
         <figure className="profile_post_avatar">
-          <img src={user.avatar} alt={user.username} />
+          {showImage ? (
+            <img src={user.avatar} alt={user.username} loading="lazy" />
+          ) : (
+            <Skeleton width="2rem" height="2rem" borderRadius="50%" />
+          )}
         </figure>
 
         <div className="profile_post_name">

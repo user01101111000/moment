@@ -1,6 +1,7 @@
+import "./HomeLayout.css";
+import logo from "../assets/icons/logo.png";
 import { Outlet, useNavigate, NavLink } from "react-router-dom";
 import { Suspense, useEffect, useState } from "react";
-import "./HomeLayout.css";
 import SuspenseLoading from "../components/helper/SuspenseLoading";
 import useAuth from "../hooks/common/useAuth";
 import { RiLogoutBoxRLine } from "react-icons/ri";
@@ -57,7 +58,9 @@ const HomeLayout = () => {
           <HomeLoading />
         )}
         <div className="navigation_bar">
-          <div></div>
+          <figure className="logo">
+            <img src={logo} alt="logo" />
+          </figure>
           <div className="nav_buttons">
             <NavLink to="/" className="nav_button">
               <HiHome className="nav_button_icon" />

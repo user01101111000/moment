@@ -33,7 +33,11 @@
     "firstNameLabel": "First name",
     "lastNameLabel": "Last name",
     "bioLabel": "Bio",
-    "save": "Save"
+    "save": "Save",
+    "delete1C": "Are you sure you want to delete this post ?",
+    "delete2C": "This action cannot be undone.",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
   },
   "time": {
     "lessThanAMinuteAgo": "less than a minute ago",

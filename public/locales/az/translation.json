@@ -33,7 +33,11 @@
     "firstNameLabel": "Ad",
     "lastNameLabel": "Soyad",
     "bioLabel": "Bioqrafiya ",
-    "save": "Yadda saxla"
+    "save": "Yadda saxla",
+    "delete1C": "Bu paylaşımı silmək istədiyinizə əminsiniz?",
+    "delete2C": "Bu əməliyyat geri qaytarıla bilməz.",
+    "cancel": "Ləğv et",
+    "confirm": "Təsdiqlə"
   },
   "time": {
     "lessThanAMinuteAgo": "indicə",

@@ -2,8 +2,10 @@ import "./DeletePostWindow.css";
 import { motion } from "framer-motion";
 import Loading from "../../ui/Loading";
 import useDeletePostMutation from "../../../hooks/api/useDeletePostMutation";
+import { useTranslation } from "react-i18next";
 
 const DeletePostWindow = ({ setShowDeleteWindow, postID, user }) => {
+  const { t } = useTranslation();
   const { mutateAsync, isPending } = useDeletePostMutation(postID);
 
   async function deleteThatPost() {
@@ -27,8 +29,8 @@ const DeletePostWindow = ({ setShowDeleteWindow, postID, user }) => {
         exit={{ opacity: 0 }}
         className="delete_post_box"
       >
-        <h1>Are you sure you want to delete this post?</h1>
-        <p>This action cannot be undone.</p>
+        <h1>{t("profile.delete1C")}</h1>
+        <p>{t("profile.delete2C")}</p>
 
         <div className="delete_post_box_buttons">
           <button
@@ -36,10 +38,12 @@ const DeletePostWindow = ({ setShowDeleteWindow, postID, user }) => {
             disabled={isPending}
             className={isPending ? "submitting" : ""}
           >
-            {isPending ? <Loading size={"1rem"} /> : "Confirm"}
+            {isPending ? <Loading size={"1rem"} /> : t("profile.confirm")}
           </button>
           {!isPending && (
-            <button onClick={() => setShowDeleteWindow(false)}>Cancel</button>
+            <button onClick={() => setShowDeleteWindow(false)}>
+              {t("profile.cancel")}
+            </button>
           )}
         </div>
       </motion.article>

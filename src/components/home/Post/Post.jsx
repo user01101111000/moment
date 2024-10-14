@@ -21,6 +21,7 @@ import { useInView } from "react-intersection-observer";
 const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
   const menuRef = useRef(null);
   const { t } = useTranslation();
+  const [showImage, setShowImage] = useState(false);
   const { ref, inView } = useInView();
   const { userInfo } = useSelector((state) => state.userInfo);
   const [showShareMenu, setShowShareMenu] = useState(false);
@@ -71,11 +72,20 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
     post.publisher.stringValue
   );
 
+  useEffect(() => {
+    const img = new Image();
+    img.src = user?.avatar?.stringValue;
+
+    img.onload = () => {
+      setShowImage(true);
+    };
+  }, [user?.avatar?.stringValue]);
+
   if (isLoading)
     return (
       <div className="post">
         <figure>
-          <Skeleton width="100%" height="3rem" borderRadius="50%" />
+          <Skeleton width="3rem" height="3rem" borderRadius="50%" />
         </figure>
 
         <div className="post_main">
@@ -100,7 +110,15 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
           navigate(`/@${user.username.stringValue}`);
         }}
       >
-        <img src={user.avatar.stringValue} alt={user.username.stringValue} />
+        {showImage ? (
+          <img
+            src={user.avatar.stringValue}
+            alt={user.username.stringValue}
+            loading="lazy"
+          />
+        ) : (
+          <Skeleton width="3rem" height="3rem" borderRadius="50%" />
+        )}
       </figure>
       <div className="post_main">
         <div className="name_area">

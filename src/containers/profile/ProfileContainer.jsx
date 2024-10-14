@@ -1,18 +1,31 @@
 import "./ProfileContainer.css";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import EditProfileWindow from "../../components/profile/EditProfileWindow/EditProfileWindow";
 import { MdVerified } from "react-icons/md";
 import ProfilePosts from "../../components/profile/ProfilePosts/ProfilePosts";
 import { IoIosSettings } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import Skeleton from "../../components/ui/Skeleton/Skeleton";
 
 const ProfileContainer = ({ user, trueUser }) => {
   const [previewAvatar, setPreviewAvatar] = useState(false);
+  const [showImage, setShowImage] = useState(false);
   const [showEditProfile, setShowEditProfile] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    const img = new Image();
+
+    img.src = user.avatar;
+
+    img.onload = () => {
+      setShowImage(true);
+    };
+  }, [user.avatar]);
+
   return (
     <motion.section
       initial={{ opacity: 0.5 }}
@@ -41,7 +54,11 @@ const ProfileContainer = ({ user, trueUser }) => {
           className="profile_avatar_fig"
           onClick={() => setPreviewAvatar(!previewAvatar)}
         >
-          <img src={user.avatar} alt={user.username} />
+          {showImage ? (
+            <img src={user.avatar} alt={user.username} loading="lazy" />
+          ) : (
+            <Skeleton width="6rem" height="6rem" borderRadius="50%" />
+          )}
         </figure>
       </div>
 
