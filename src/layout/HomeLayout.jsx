@@ -58,7 +58,7 @@ const HomeLayout = () => {
           <HomeLoading />
         )}
         <div className="navigation_bar">
-          <figure className="logo">
+          <figure className="logo" onClick={() => navigate("/")}>
             <img src={logo} alt="logo" />
           </figure>
           <div className="nav_buttons">

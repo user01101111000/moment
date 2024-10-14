@@ -1,7 +1,7 @@
 .auth_container {
   min-height: 100vh;
   width: 100%;
-  background: url("https://firebasestorage.googleapis.com/v0/b/moment-c8183.appspot.com/o/common%2Fbg.webp?alt=media&token=2855e526-c9b2-4f44-8e34-480e22f998b2");
+  background: url("/src/assets/images/bg.webp");
   background-color: #09090b;
   display: flex;
   justify-content: center;

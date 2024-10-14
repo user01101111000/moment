@@ -7,6 +7,8 @@
   padding: 2rem;
   border-radius: 10px;
   position: relative;
+
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
 }
 
 .login_form {
@@ -144,7 +146,18 @@ input[type="radio"] {
   height: 0.2px;
   border-color: rgba(255, 255, 255, 0.1);
 }
-
+.auth_header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.auth_header_lang_area {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 @media screen and (max-width: 500px) {
   .register_box {
     width: 100%;

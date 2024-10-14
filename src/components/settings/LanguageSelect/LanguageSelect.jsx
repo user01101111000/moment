@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import { useTranslation } from "react-i18next";
 
-const LanguageSelect = () => {
+const LanguageSelect = ({ auth = false }) => {
   const options = [
-    { value: "en", label: "English" },
-    { value: "az", label: "Azerbaijani" },
+    { value: "en", label: auth ? "EN" : "English" },
+    { value: "az", label: auth ? "AZ" : "Azerbaijani" },
   ];
 
   const { i18n } = useTranslation();
@@ -14,7 +14,11 @@ const LanguageSelect = () => {
     value: ["en", "az"].includes(i18n.language) ? i18n.language : "en",
     label:
       ["en", "az"].includes(i18n.language) && i18n.language == "az"
-        ? "Azerbaijani"
+        ? auth
+          ? "AZ"
+          : "Azerbaijani"
+        : auth
+        ? "EN"
         : "English",
   });
 
@@ -28,11 +32,13 @@ const LanguageSelect = () => {
         defaultValue={selectedOption}
         onChange={setSelectedOption}
         options={options}
+        components={{ IndicatorSeparator: () => null }}
         styles={{
           control: (base) => ({
             ...base,
             fontFamily: "Geist",
             fontSize: "0.9rem",
+            boxShadow: "none",
             fontWeight: "600",
             backgroundColor: "#181818",
             color: "#fff",

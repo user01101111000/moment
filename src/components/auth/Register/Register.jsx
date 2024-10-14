@@ -9,6 +9,7 @@ import { toast, Bounce } from "react-toastify";
 import useRegisterMutation from "../../../hooks/api/useRegisterMutation";
 import { useTranslation } from "react-i18next";
 import useGetUsersQuery from "../../../hooks/api/useGetUsersQuery";
+import LanguageSelect from "../../settings/LanguageSelect/LanguageSelect";
 
 const Register = ({ setShowLogin }) => {
   const { data } = useGetUsersQuery(true);
@@ -20,6 +21,8 @@ const Register = ({ setShowLogin }) => {
     values,
     handleChange,
     handleSubmit,
+    handleBlur,
+    touched,
     errors,
     resetForm,
     isSubmitting,
@@ -62,7 +65,12 @@ const Register = ({ setShowLogin }) => {
       exit={{ opacity: 0 }}
       className="register_box"
     >
-      <h1 className="login_label">{t("register.registerLabel")}</h1>
+      <div className="auth_header">
+        <h1 className="login_label">{t("register.registerLabel")}</h1>
+        <div className="auth_header_lang_area">
+          <LanguageSelect auth={true} />
+        </div>
+      </div>
 
       <form className="login_form" onSubmit={handleSubmit}>
         <div className="input_box_names">
@@ -74,10 +82,11 @@ const Register = ({ setShowLogin }) => {
               name="firstName"
               placeholder={t("register.firstNameLabel")}
               onChange={handleChange}
+              onBlur={handleBlur}
               value={values.firstName}
             />
 
-            {errors.firstName && (
+            {errors.firstName && touched.firstName && (
               <p className="login_error">{errors.firstName}</p>
             )}
           </div>
@@ -89,10 +98,11 @@ const Register = ({ setShowLogin }) => {
               name="lastName"
               placeholder={t("register.lastNameLabel")}
               onChange={handleChange}
+              onBlur={handleBlur}
               value={values.lastName}
             />
 
-            {errors.lastName && (
+            {errors.lastName && touched.lastName && (
               <p className="login_error">{errors.lastName}</p>
             )}
           </div>
@@ -105,10 +115,13 @@ const Register = ({ setShowLogin }) => {
             name="username"
             placeholder={t("register.usernameLabel")}
             onChange={handleChange}
+            onBlur={handleBlur}
             value={values.username}
           />
 
-          {errors.username && <p className="login_error">{errors.username}</p>}
+          {errors.username && touched.username && (
+            <p className="login_error">{errors.username}</p>
+          )}
         </div>
 
         <div className="input_box">
@@ -118,10 +131,13 @@ const Register = ({ setShowLogin }) => {
             name="email"
             placeholder={t("register.emailLabel")}
             onChange={handleChange}
+            onBlur={handleBlur}
             value={values.email}
           />
 
-          {errors.email && <p className="login_error">{errors.email}</p>}
+          {errors.email && touched.email && (
+            <p className="login_error">{errors.email}</p>
+          )}
         </div>
 
         <div className="input_box">
@@ -132,6 +148,7 @@ const Register = ({ setShowLogin }) => {
               name="password"
               placeholder={t("register.passwordLabel")}
               onChange={handleChange}
+              onBlur={handleBlur}
               value={values.password}
             />
 
@@ -148,7 +165,9 @@ const Register = ({ setShowLogin }) => {
             )}
           </div>
 
-          {errors.password && <p className="login_error">{errors.password}</p>}
+          {errors.password && touched.password && (
+            <p className="login_error">{errors.password}</p>
+          )}
         </div>
 
         <hr className="divider_register" />
@@ -160,6 +179,7 @@ const Register = ({ setShowLogin }) => {
               value="male"
               name="gender"
               checked={values.gender == "male"}
+              onBlur={handleBlur}
               onChange={handleChange}
             />
             {t("register.genderMale")}
@@ -171,6 +191,7 @@ const Register = ({ setShowLogin }) => {
               value="female"
               name="gender"
               checked={values.gender == "female"}
+              onBlur={handleBlur}
               onChange={handleChange}
             />
             {t("register.genderFemale")}

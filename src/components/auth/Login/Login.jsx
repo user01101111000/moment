@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import useLoginMutation from "../../../hooks/api/useLoginMutation";
 import { toast, Bounce } from "react-toastify";
 import { useTranslation } from "react-i18next";
+import LanguageSelect from "../../settings/LanguageSelect/LanguageSelect";
 
 const Login = ({ setShowLogin }) => {
   const { t } = useTranslation();
@@ -17,6 +18,8 @@ const Login = ({ setShowLogin }) => {
   const {
     values,
     handleChange,
+    handleBlur,
+    touched,
     handleSubmit,
     errors,
     resetForm,
@@ -60,7 +63,12 @@ const Login = ({ setShowLogin }) => {
       exit={{ opacity: 0 }}
       className="login_box"
     >
-      <h1 className="login_label">{t("login.loginLabel")}</h1>
+      <div className="auth_header">
+        <h1 className="login_label">{t("login.loginLabel")}</h1>
+        <div className="auth_header_lang_area">
+          <LanguageSelect auth={true} />
+        </div>
+      </div>
       <form className="login_form" onSubmit={handleSubmit}>
         <div className="input_box">
           <label htmlFor="email">{t("login.emailLabel")}</label>
@@ -69,10 +77,13 @@ const Login = ({ setShowLogin }) => {
             name="email"
             placeholder={t("login.emailLabel")}
             onChange={handleChange}
+            onBlur={handleBlur}
             value={values.email}
           />
 
-          {errors.email && <p className="login_error">{errors.email}</p>}
+          {errors.email && touched.email && (
+            <p className="login_error">{errors.email}</p>
+          )}
         </div>
 
         <div className="input_box">
@@ -83,6 +94,7 @@ const Login = ({ setShowLogin }) => {
               name="password"
               placeholder={t("login.passwordLabel")}
               onChange={handleChange}
+              onBlur={handleBlur}
               value={values.password}
             />
 
@@ -99,7 +111,9 @@ const Login = ({ setShowLogin }) => {
             )}
           </div>
 
-          {errors.password && <p className="login_error">{errors.password}</p>}
+          {errors.password && touched.password && (
+            <p className="login_error">{errors.password}</p>
+          )}
         </div>
 
         <button

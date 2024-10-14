@@ -6,6 +6,8 @@
   background-color: #181818;
   padding: 2rem;
   border-radius: 10px;
+
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
 }
 
 .login_form {
@@ -106,6 +108,19 @@
   color: red;
   font-size: 0.8rem;
   font-weight: 300;
+}
+
+.auth_header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.auth_header_lang_area {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 @media screen and (max-width: 400px) {

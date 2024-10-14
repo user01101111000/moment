@@ -1,7 +1,6 @@
 import * as yup from "yup";
 
-const passwordRegEx =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#/$%/^&/*])(?=.{8,})/;
+const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
 
 const emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
@@ -28,7 +27,7 @@ const loginSchema = yup.object().shape({
     .min(6, "Password must be at least 6 characters.")
     .matches(
       passwordRegEx,
-      "Password must contain at least one uppercase, one lowercase, one number and one special character."
+      "Password must contain at least one uppercase, one lowercase and one number."
     )
     .required("Password is required."),
 });
@@ -64,7 +63,7 @@ const registerSchema = (usernames) => {
       .min(6, "Password must be at least 6 characters.")
       .matches(
         passwordRegEx,
-        "Password must contain at least one uppercase, one lowercase, one number and one special character."
+        "Password must contain at least one uppercase, one lowercase and one number."
       )
       .required("Password is required."),
     gender: yup.string().required("Gender is required."),
