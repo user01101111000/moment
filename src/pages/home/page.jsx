@@ -6,7 +6,6 @@ import useGetInifiedPostsQuery from "../../hooks/api/useGetPostsQuery";
 const Home = () => {
   const {
     data,
-    status,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
@@ -26,7 +25,6 @@ const Home = () => {
   return (
     <HomeContainer
       posts={!posts[0] ? [] : posts}
-      status={status}
       fetchNextPage={fetchNextPage}
       hasNextPage={hasNextPage}
       isFetchingNextPage={isFetchingNextPage}

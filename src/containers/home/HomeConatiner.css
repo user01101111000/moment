@@ -8,7 +8,7 @@
   color: white;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 800px) {
   .home {
     height: calc(100% - 5rem);
   }

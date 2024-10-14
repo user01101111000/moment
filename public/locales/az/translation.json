@@ -1,6 +1,8 @@
 {
   "settings": {
-    "language": "Dil"
+    "language": "Dil",
+    "logout": "Çıxış",
+    "logoutFromAccount": "Hesabdan çıx"
   },
   "login": {
     "loginLabel": "DAXİL OL",

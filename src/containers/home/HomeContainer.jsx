@@ -1,6 +1,6 @@
+import "./HomeConatiner.css";
 import PostList from "../../components/home/PostList/PostList";
 import { motion } from "framer-motion";
-import "./HomeConatiner.css";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 
@@ -10,13 +10,12 @@ const HomeContainer = ({
   hasNextPage,
   isFetchingNextPage,
 }) => {
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+  });
 
   useEffect(() => {
-    if (inView && hasNextPage) {
-      fetchNextPage();
-      console.log("fetch");
-    }
+    inView && hasNextPage && fetchNextPage();
   }, [inView, hasNextPage]);
 
   return (
@@ -25,7 +24,11 @@ const HomeContainer = ({
       animate={{ opacity: 1 }}
       className="home"
     >
-      <PostList posts={posts} refProp={ref} isFetchingNextPage={isFetchingNextPage} />
+      <PostList
+        posts={posts}
+        refProp={ref}
+        isFetchingNextPage={isFetchingNextPage}
+      />
     </motion.article>
   );
 };

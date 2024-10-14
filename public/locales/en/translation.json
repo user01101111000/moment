@@ -1,6 +1,8 @@
 {
   "settings": {
-    "language": "Language"
+    "language": "Language",
+    "logout": "Logout",
+    "logoutFromAccount": "Log out from account"
   },
   "login": {
     "loginLabel": "LOGIN",

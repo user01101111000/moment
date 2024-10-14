@@ -3,10 +3,10 @@
   background-color: #181818;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 10px;
   border: 0.5px solid rgba(255, 255, 255, 0.1);
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .edit_profile_box_header {

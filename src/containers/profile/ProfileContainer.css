@@ -82,7 +82,16 @@
 
 .profile_container_edit_area {
   width: 100%;
+  display: flex;
+  gap: 1rem;
 }
+
+.profile_container_edit_area_setting_button {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+}
+
 .profile_container_edit_area_button {
   width: 100%;
   background-color: transparent;

@@ -1,4 +1,4 @@
-import { Outlet, useNavigate, NavLink, useLocation } from "react-router-dom";
+import { Outlet, useNavigate, NavLink } from "react-router-dom";
 import { Suspense, useEffect, useState } from "react";
 import "./HomeLayout.css";
 import SuspenseLoading from "../components/helper/SuspenseLoading";
@@ -47,7 +47,7 @@ const HomeLayout = () => {
   }
 
   return (
-    <main className="home-layout">
+    <main className="home_layout">
       <article className="flow">
         {!isPending ? (
           <Suspense fallback={<SuspenseLoading />}>

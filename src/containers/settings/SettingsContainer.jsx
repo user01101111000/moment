@@ -2,12 +2,22 @@ import { useTranslation } from "react-i18next";
 import { IoLanguage } from "react-icons/io5";
 import "./SettingsContainer.css";
 import LanguageSelect from "../../components/settings/LanguageSelect/LanguageSelect";
+import { RiLogoutBoxRLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/common/useAuth";
+import { motion } from "framer-motion";
 
 const SettingsContainer = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
+  const { logout } = useAuth();
 
   return (
-    <section className="settings_container">
+    <motion.section
+      initial={{ opacity: 0.5 }}
+      animate={{ opacity: 1 }}
+      className="settings_container"
+    >
       <div className="lang_setting">
         <div className="lang_label">
           <IoLanguage className="lang_icon" />
@@ -16,7 +26,25 @@ const SettingsContainer = () => {
 
         <LanguageSelect />
       </div>
-    </section>
+
+      <div className="logout_setting">
+        <div className="logout_label">
+          <RiLogoutBoxRLine className="logout_icon" />
+          <h1>{t("settings.logout")}</h1>
+        </div>
+
+        <button
+          className="logout_setting_button"
+          onClick={() => {
+            localStorage.removeItem("m_i&r");
+            logout();
+            navigate("/auth");
+          }}
+        >
+          {t("settings.logoutFromAccount")}
+        </button>
+      </div>
+    </motion.section>
   );
 };
 

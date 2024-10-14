@@ -5,11 +5,13 @@ import { useTranslation } from "react-i18next";
 import EditProfileWindow from "../../components/profile/EditProfileWindow/EditProfileWindow";
 import { MdVerified } from "react-icons/md";
 import ProfilePosts from "../../components/profile/ProfilePosts/ProfilePosts";
+import { IoIosSettings } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const ProfileContainer = ({ user, trueUser }) => {
   const [previewAvatar, setPreviewAvatar] = useState(false);
   const [showEditProfile, setShowEditProfile] = useState(false);
-
+  const navigate = useNavigate();
   const { t } = useTranslation();
   return (
     <motion.section
@@ -51,6 +53,11 @@ const ProfileContainer = ({ user, trueUser }) => {
           >
             {t("profile.editProfile")}
           </button>
+
+          <IoIosSettings
+            className="profile_container_edit_area_setting_button"
+            onClick={() => navigate("/settings")}
+          />
         </div>
       )}
 

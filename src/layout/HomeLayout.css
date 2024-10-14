@@ -1,6 +1,7 @@
-.home-layout {
+.home_layout {
   height: 100dvh;
   width: 100%;
+  background: url("https://firebasestorage.googleapis.com/v0/b/moment-c8183.appspot.com/o/common%2Fbg.webp?alt=media&token=2855e526-c9b2-4f44-8e34-480e22f998b2");
   background-color: #09090b;
   display: flex;
   justify-content: center;
@@ -20,7 +21,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   overflow: hidden;
 }
@@ -34,7 +35,7 @@
   position: fixed;
   height: 100dvh;
   width: 5rem;
-  background-color: #09090b;
+  background-color: #181818;
   top: 0;
   left: 0;
   border-radius: 0;
@@ -83,7 +84,7 @@
   gap: 1rem;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 800px) {
   .flow {
     height: 100dvh;
     width: 100%;
@@ -99,6 +100,7 @@
     justify-content: center;
     align-items: center;
     margin-top: auto;
+    background-color: #09090b !important;
   }
 
   .nav_buttons {
