@@ -12,7 +12,7 @@ const LanguageSelect = () => {
 
   const [selectedOption, setSelectedOption] = useState({
     value: ["en", "az"].includes(i18n.language) ? i18n.language : "en",
-    label: "English",
+    label: i18n.language === "en" ? "English" : "Azerbaijani",
   });
 
   useEffect(() => {

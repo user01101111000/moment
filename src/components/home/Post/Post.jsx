@@ -34,7 +34,6 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
   const [liked, setLiked] = useState(Boolean(likeSituation));
   const [likeCount, setLikeCount] = useState(+post.likeCount.stringValue);
 
-  console.log(showShareMenu);
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
