@@ -6,8 +6,8 @@ const useAddPostLikeMutation = (id) => {
   return useMutation({
     mutationFn: postLike,
     onSuccess: () => {
-      queryClient.refetchQueries({ queryKey: ["posts"] });
-      queryClient.refetchQueries({ queryKey: ["postsAndComments", id] });
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
+      queryClient.invalidateQueries({ queryKey: ["postsAndComments", id] });
     },
   });
 };

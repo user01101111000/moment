@@ -18,14 +18,14 @@ import { useSelector } from "react-redux";
 import { MdVerified } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 
-const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
+const Post = ({ post, isDetail = false, setAdd = () => {}, refetch }) => {
   const menuRef = useRef(null);
   const { t } = useTranslation();
   const [showImage, setShowImage] = useState(false);
   const { ref, inView } = useInView();
   const { userInfo } = useSelector((state) => state.userInfo);
   const [showShareMenu, setShowShareMenu] = useState(false);
-  const { mutateAsync: postLike } = useAddPostLikeMutation(post.id.stringValue);
+  const { mutate: postLike } = useAddPostLikeMutation(post.id.stringValue);
   const navigate = useNavigate();
 
   const likeSituation = post?.likers?.arrayValue?.values?.some(
@@ -56,8 +56,8 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
   }, [inView]);
 
   const throttledLike = useCallback(
-    throttle(async ({ action, likers, likeCount }) => {
-      await postLike({
+    throttle(({ action, likers, likeCount }) => {
+      postLike({
         postID: post.id.stringValue,
         totalLikeCount: action ? +likeCount + 1 : +likeCount - 1,
         likers: likers,

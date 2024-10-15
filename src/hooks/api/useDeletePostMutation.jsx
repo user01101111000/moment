@@ -10,8 +10,8 @@ const useDeletePostMutation = () => {
   return useMutation({
     mutationFn: deletePost,
     onSuccess: (data) => {
-      queryClient.refetchQueries({ queryKey: ["posts"] });
-      queryClient.refetchQueries({ queryKey: ["postsAndComments"] });
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
+      queryClient.invalidateQueries({ queryKey: ["postsAndComments"] });
 
       dispatch(setPostsDataInfo(data));
     },

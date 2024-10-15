@@ -46,7 +46,7 @@ async function register(userInfo) {
       },
       avatar: {
         stringValue:
-          "https://firebasestorage.googleapis.com/v0/b/moment-c8183.appspot.com/o/common%2Fpp.png?alt=media&token=4d85b22c-df4a-48d5-952f-32c6bd1406d7",
+          "https://firebasestorage.googleapis.com/v0/b/test-26a3b.appspot.com/o/common%2Fpp.webp?alt=media&token=e5029d8e-439c-4de7-8b0e-2f3da589122b",
       },
       posts: {
         arrayValue: {

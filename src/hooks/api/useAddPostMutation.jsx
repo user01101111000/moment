@@ -10,7 +10,7 @@ const useAddPostMutation = () => {
   return useMutation({
     mutationFn: addPost,
     onSuccess: (data) => {
-      queryClient.refetchQueries({ queryKey: ["posts"] });
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
       dispatch(setPostsDataInfo(data));
     },
   });

@@ -6,7 +6,7 @@ const useAddCommentMutation = (id) => {
   return useMutation({
     mutationFn: postComment,
     onSuccess: () => {
-      queryClient.refetchQueries({ queryKey: ["postsAndComments", id] });
+      queryClient.invalidateQueries({ queryKey: ["postsAndComments", id] });
     },
   });
 };
