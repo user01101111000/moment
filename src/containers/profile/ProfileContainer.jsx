@@ -82,9 +82,7 @@ const ProfileContainer = ({ user, trueUser }) => {
 
       {user?.posts?.length ? (
         <div className="profile_container_posts">
-          <h1>
-            @{user.username + "'" + t("profile.s")} {t("profile.posts")}
-          </h1>
+          <h1>{t("profile.posts")}</h1>
           <ProfilePosts posts={user?.posts} user={user} trueUser={trueUser} />
         </div>
       ) : (
