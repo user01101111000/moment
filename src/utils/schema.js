@@ -24,7 +24,7 @@ const loginSchema = yup.object().shape({
     .required("Email is required."),
   password: yup
     .string()
-    .min(6, "Password must be at least 6 characters.")
+    .min(8, "Password must be at least 8 characters.")
     .matches(
       passwordRegEx,
       "Password must contain at least one uppercase, one lowercase and one number."
@@ -60,7 +60,7 @@ const registerSchema = (usernames) => {
       .required("Email is required."),
     password: yup
       .string()
-      .min(6, "Password must be at least 6 characters.")
+      .min(8, "Password must be at least 8 characters.")
       .matches(
         passwordRegEx,
         "Password must contain at least one uppercase, one lowercase and one number."

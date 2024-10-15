@@ -34,7 +34,7 @@ const ProfilePost = ({ postID, user, trueUser }) => {
     );
 
   return (
-    <div className="profile_post">
+    <div className="profile_post" onClick={() => navigate(`/post/${postID}`)}>
       <div className="profile_post_name_area">
         <figure className="profile_post_avatar">
           {showImage ? (
@@ -60,7 +60,10 @@ const ProfilePost = ({ postID, user, trueUser }) => {
       <div className="profile_post_buttons">
         <div
           className="profile_post_buttons_link profile_post_button"
-          onClick={() => navigate(`/post/${postID}`)}
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`/post/${postID}`);
+          }}
         >
           <LuExternalLink className="profile_post_buttons_link_icon" />
         </div>
@@ -68,7 +71,10 @@ const ProfilePost = ({ postID, user, trueUser }) => {
         {trueUser && (
           <div
             className="profile_post_buttons_delete profile_post_button"
-            onClick={() => setShowDeleteWindow(true)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowDeleteWindow(true);
+            }}
           >
             <MdDelete className="profile_post_buttons_link_icon profile_post_buttons_link_icon_trash" />
           </div>

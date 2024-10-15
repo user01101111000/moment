@@ -36,7 +36,7 @@ async function register(userInfo) {
         stringValue: userID,
       },
       bio: {
-        stringValue: "No bio yet.",
+        stringValue: "",
       },
       verified: {
         stringValue: "false",

@@ -83,6 +83,8 @@
   align-items: center;
   flex: 1;
   transition: all 0.2s ease-in-out;
+
+  border-radius: 8px;
 }
 .profile_post_button:hover {
   background-color: rgba(255, 255, 255, 0.2);

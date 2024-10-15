@@ -8,7 +8,8 @@ const DeletePostWindow = ({ setShowDeleteWindow, postID, user }) => {
   const { t } = useTranslation();
   const { mutateAsync, isPending } = useDeletePostMutation(postID);
 
-  async function deleteThatPost() {
+  async function deleteThatPost(e) {
+    e.stopPropagation();
     await mutateAsync({
       id: postID,
       postIDs: user.posts,
@@ -41,7 +42,12 @@ const DeletePostWindow = ({ setShowDeleteWindow, postID, user }) => {
             {isPending ? <Loading size={"1rem"} /> : t("profile.confirm")}
           </button>
           {!isPending && (
-            <button onClick={() => setShowDeleteWindow(false)}>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowDeleteWindow(false);
+              }}
+            >
               {t("profile.cancel")}
             </button>
           )}

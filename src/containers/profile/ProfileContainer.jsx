@@ -81,7 +81,12 @@ const ProfileContainer = ({ user, trueUser }) => {
       <hr className="divider" />
 
       {user?.posts?.length ? (
-        <ProfilePosts posts={user?.posts} user={user} trueUser={trueUser} />
+        <div className="profile_container_posts">
+          <h1>
+            @{user.username + "'" + t("profile.s")} {t("profile.posts")}
+          </h1>
+          <ProfilePosts posts={user?.posts} user={user} trueUser={trueUser} />
+        </div>
       ) : (
         <h1 className="profile_container_no_posts">No posts yet.</h1>
       )}
@@ -100,6 +105,7 @@ const ProfileContainer = ({ user, trueUser }) => {
             initial={{ opacity: 0.5 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={() => setPreviewAvatar(false)}
             className="profile_container_avatar_preview"
           >
             <h1
@@ -112,6 +118,7 @@ const ProfileContainer = ({ user, trueUser }) => {
             <motion.figure
               initial={{ opacity: 0.5, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
+              onClick={(e) => e.stopPropagation()}
               className="profile_container_avatar_preview_fig"
             >
               <img src={user.avatar} alt={user.username} />

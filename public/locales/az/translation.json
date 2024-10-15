@@ -37,7 +37,9 @@
     "delete1C": "Bu paylaşımı silmək istədiyinizə əminsiniz?",
     "delete2C": "Bu əməliyyat geri qaytarıla bilməz.",
     "cancel": "Ləğv et",
-    "confirm": "Təsdiqlə"
+    "confirm": "Təsdiqlə",
+    "posts": "paylaşımları",
+    "s": "nin"
   },
   "time": {
     "lessThanAMinuteAgo": "indicə",

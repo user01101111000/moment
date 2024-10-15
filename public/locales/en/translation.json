@@ -37,7 +37,9 @@
     "delete1C": "Are you sure you want to delete this post ?",
     "delete2C": "This action cannot be undone.",
     "cancel": "Cancel",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "posts": "Posts",
+    "s": "'s"
   },
   "time": {
     "lessThanAMinuteAgo": "less than a minute ago",
