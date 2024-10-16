@@ -1,6 +1,6 @@
-import loa from "../../assets/images/loading.gif";
+import loading from "../../../assets/images/loading.gif";
 
-const Loading = ({ size }) => {
+const LoadingImageComponent = ({ size }) => {
   return (
     <figure style={{ width: size, height: size }}>
       <img
@@ -8,11 +8,11 @@ const Loading = ({ size }) => {
           width: "100%",
           height: "100%",
         }}
-        src={loa}
+        src={loading}
         alt="loading"
       />
     </figure>
   );
 };
 
-export default Loading;
+export default LoadingImageComponent;

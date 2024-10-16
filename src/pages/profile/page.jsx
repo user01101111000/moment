@@ -2,7 +2,7 @@ import ProfileContainer from "../../containers/profile/ProfileContainer";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import useGetUsersQuery from "../../hooks/api/useGetUsersQuery";
-import HomeLaoding from "../../containers/home/HomeLoading";
+import SimpleLoadingPage from "../../components/ui/SimpleLoadingPage/SimpleLoadingPage";
 import NotFound from "../not_found/page";
 
 const Profile = () => {
@@ -15,7 +15,7 @@ const Profile = () => {
 
   const { data, isLoading } = useGetUsersQuery(!trueUser);
 
-  if (isLoading) return <HomeLaoding />;
+  if (isLoading) return <SimpleLoadingPage />;
 
   const findedUser = data
     ?.map((x) => x?.fields)

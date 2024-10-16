@@ -17,6 +17,7 @@ import Skeleton from "../../ui/Skeleton/Skeleton";
 import { useSelector } from "react-redux";
 import { MdVerified } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
+import OnePostLoading from "../../ui/OnePostLoading/OnePostLoading";
 
 const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
   const menuRef = useRef(null);
@@ -81,26 +82,7 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
     };
   }, [user?.avatar?.stringValue]);
 
-  if (isLoading)
-    return (
-      <div className="post">
-        <figure>
-          <Skeleton width="3rem" height="3rem" borderRadius="50%" />
-        </figure>
-
-        <div className="post_main">
-          <div className="name_area">
-            <Skeleton width="100%" height="1rem" borderRadius="4px" />
-
-            <p>|</p>
-
-            <Skeleton width="100%" height="1rem" borderRadius="4px" />
-          </div>
-
-          <Skeleton width="100%" height="3rem" borderRadius="4px" />
-        </div>
-      </div>
-    );
+  if (isLoading) return <OnePostLoading hr />;
 
   return (
     <div className="post">

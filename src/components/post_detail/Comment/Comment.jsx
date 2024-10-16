@@ -1,4 +1,4 @@
-import "./Comment.css";
+import "../../home/Post/Post.css";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { PiTelegramLogo } from "react-icons/pi";
 import timeConverter from "@/utils/timeConverter";
@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import { FaLink } from "react-icons/fa";
 import { throttle } from "lodash";
 import useAddCommentLikeMutation from "../../../hooks/api/useAddCommentLikeMutation";
+import OnePostLoading from "../../ui/OnePostLoading/OnePostLoading";
 
 const Comment = ({ comment }) => {
   const menuRef = useRef(null);
@@ -71,26 +72,7 @@ const Comment = ({ comment }) => {
   const { data: user, isLoading } = useGetAnyUserInfoQuery(
     comment.publisher.stringValue
   );
-  if (isLoading)
-    return (
-      <div className="post">
-        <figure>
-          <Skeleton width="100%" height="3rem" borderRadius="50%" />
-        </figure>
-
-        <div className="post_main">
-          <div className="name_area">
-            <Skeleton width="100%" height="1rem" borderRadius="4px" />
-
-            <p>|</p>
-
-            <Skeleton width="100%" height="1rem" borderRadius="4px" />
-          </div>
-
-          <Skeleton width="100%" height="1rem" borderRadius="4px" />
-        </div>
-      </div>
-    );
+  if (isLoading) return <OnePostLoading hr />;
 
   return (
     <div className="post">

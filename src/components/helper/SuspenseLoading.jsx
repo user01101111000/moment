@@ -1,4 +1,4 @@
-import Loading from "../ui/Loading";
+import LoadingImageComponent from "../ui/LoadingImageComponent/LoadingImageComponent";
 
 const SuspenseLoading = () => {
   return (
@@ -12,7 +12,7 @@ const SuspenseLoading = () => {
         backgroundColor: "#181818",
       }}
     >
-      <Loading size={"1.3rem"} />
+      <LoadingImageComponent size={"1.3rem"} />
     </section>
   );
 };

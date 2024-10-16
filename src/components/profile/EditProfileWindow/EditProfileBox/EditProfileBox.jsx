@@ -1,7 +1,7 @@
 import "./EditProfileBox.css";
 import { motion } from "framer-motion";
 import { isObject, useFormik } from "formik";
-import Loading from "../../../ui/Loading";
+import LoadingImageComponent from "../../../ui/LoadingImageComponent/LoadingImageComponent";
 import { editProfileSchema } from "../../../../utils/schema";
 import useUpdateUserInfoMutation from "../../../../hooks/api/useUpdateUserInfoMutation";
 import { useTranslation } from "react-i18next";
@@ -129,7 +129,11 @@ const EditProfileBox = ({ setShowEditProfile, user }) => {
           type="submit"
           disabled={isSubmitting}
         >
-          {isSubmitting ? <Loading size={"1rem"} /> : t("profile.save")}
+          {isSubmitting ? (
+            <LoadingImageComponent size={"1rem"} />
+          ) : (
+            t("profile.save")
+          )}
         </button>
       </form>
     </motion.div>

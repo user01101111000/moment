@@ -2,7 +2,7 @@ import "./AddPostBox.css";
 import { useFormik } from "formik";
 import { postSchema } from "../../../../utils/schema";
 import { motion } from "framer-motion";
-import Loading from "../../../ui/Loading";
+import LoadingImageComponent from "../../../ui/LoadingImageComponent/LoadingImageComponent";
 import { useTranslation } from "react-i18next";
 
 const AddPostBox = ({
@@ -64,7 +64,11 @@ const AddPostBox = ({
             className={isSubmitting ? "submitting" : ""}
             disabled={isSubmitting}
           >
-            {isSubmitting ? <Loading size={"1rem"} /> : buttonName}
+            {isSubmitting ? (
+              <LoadingImageComponent size={"1rem"} />
+            ) : (
+              buttonName
+            )}
           </button>
 
           {!isSubmitting && (

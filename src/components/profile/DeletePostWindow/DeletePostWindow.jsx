@@ -1,6 +1,6 @@
 import "./DeletePostWindow.css";
 import { motion } from "framer-motion";
-import Loading from "../../ui/Loading";
+import LoadingImageComponent from "../../ui/LoadingImageComponent/LoadingImageComponent";
 import useDeletePostMutation from "../../../hooks/api/useDeletePostMutation";
 import { useTranslation } from "react-i18next";
 
@@ -39,7 +39,11 @@ const DeletePostWindow = ({ setShowDeleteWindow, postID, user }) => {
             disabled={isPending}
             className={isPending ? "submitting" : ""}
           >
-            {isPending ? <Loading size={"1rem"} /> : t("profile.confirm")}
+            {isPending ? (
+              <LoadingImageComponent size={"1rem"} />
+            ) : (
+              t("profile.confirm")
+            )}
           </button>
           {!isPending && (
             <button

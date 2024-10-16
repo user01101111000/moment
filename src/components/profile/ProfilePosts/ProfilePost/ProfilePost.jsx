@@ -1,6 +1,6 @@
 import "./ProfilePost.css";
 import useGetOnePostQuery from "../../../../hooks/api/useGetOnePostQuery";
-import Loading from "../../../ui/Loading";
+import LoadingImageComponent from "../../../ui/LoadingImageComponent/LoadingImageComponent";
 import { MdVerified } from "react-icons/md";
 import { LuExternalLink } from "react-icons/lu";
 import { MdDelete } from "react-icons/md";
@@ -29,7 +29,7 @@ const ProfilePost = ({ postID, user, trueUser }) => {
   if (isLoading)
     return (
       <div className="profile_post profile_post_center">
-        <Loading size={"1.2rem"} />
+        <LoadingImageComponent size={"1.2rem"} />
       </div>
     );
 

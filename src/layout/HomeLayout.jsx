@@ -18,6 +18,7 @@ import { decryptToken } from "../utils/cryptoID";
 import { useSelector } from "react-redux";
 import HomeLoading from "../containers/home/HomeLoading";
 import { useTranslation } from "react-i18next";
+import SimpleLoadingPage from "../components/ui/SimpleLoadingPage/SimpleLoadingPage";
 
 const HomeLayout = () => {
   const { t } = useTranslation();
@@ -55,7 +56,7 @@ const HomeLayout = () => {
             <Outlet />
           </Suspense>
         ) : (
-          <HomeLoading />
+          <SimpleLoadingPage />
         )}
         <div className="navigation_bar">
           <figure className="logo" onClick={() => navigate("/")}>

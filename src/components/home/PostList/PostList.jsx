@@ -1,4 +1,4 @@
-import Loading from "../../ui/Loading";
+import LoadingImageComponent from "../../ui/LoadingImageComponent/LoadingImageComponent";
 import Post from "../Post/Post";
 import "./PostList.css";
 
@@ -10,7 +10,7 @@ const PostList = ({ posts = [], refProp, isFetchingNextPage }) => {
 
         {isFetchingNextPage && (
           <div className="infinitie_loading_area">
-            <Loading size={"1rem"} />
+            <LoadingImageComponent size={"1rem"} />
           </div>
         )}
       </div>
