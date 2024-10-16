@@ -8,6 +8,5 @@
   align-content: start;
   flex-wrap: wrap;
 
-  overflow-y: scroll !important;
- 
+  overflow-y: scroll;
 }
