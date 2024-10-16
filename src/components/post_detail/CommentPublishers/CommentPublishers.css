@@ -10,6 +10,8 @@
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 6;
   padding: 1.5rem;
+
+  backdrop-filter: blur(5px);
 }
 
 .comment_publishers_box {

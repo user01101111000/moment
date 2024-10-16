@@ -18,14 +18,14 @@ import { useSelector } from "react-redux";
 import { MdVerified } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 
-const Post = ({ post, isDetail = false, setAdd = () => {}, refetch }) => {
+const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
   const menuRef = useRef(null);
   const { t } = useTranslation();
   const [showImage, setShowImage] = useState(false);
   const { ref, inView } = useInView();
   const { userInfo } = useSelector((state) => state.userInfo);
   const [showShareMenu, setShowShareMenu] = useState(false);
-  const { mutate: postLike } = useAddPostLikeMutation(post.id.stringValue);
+  const { mutateAsync: postLike } = useAddPostLikeMutation(post.id.stringValue);
   const navigate = useNavigate();
 
   const likeSituation = post?.likers?.arrayValue?.values?.some(
@@ -56,15 +56,15 @@ const Post = ({ post, isDetail = false, setAdd = () => {}, refetch }) => {
   }, [inView]);
 
   const throttledLike = useCallback(
-    throttle(({ action, likers, likeCount }) => {
-      postLike({
+    throttle(async ({ action, likers, likeCount }) => {
+      await postLike({
         postID: post.id.stringValue,
-        totalLikeCount: action ? +likeCount + 1 : +likeCount - 1,
+        totalLikeCount: likeCount,
         likers: likers,
         liker: userInfo.id,
         action: action,
       });
-    }, 2000),
+    }, 5000),
     []
   );
 
@@ -157,7 +157,7 @@ const Post = ({ post, isDetail = false, setAdd = () => {}, refetch }) => {
                   throttledLike({
                     action: false,
                     likers: post?.likers?.arrayValue?.values || [],
-                    likeCount: post.likeCount.stringValue,
+                    likeCount: +post.likeCount.stringValue - 1,
                   });
                 }}
               />
@@ -170,7 +170,7 @@ const Post = ({ post, isDetail = false, setAdd = () => {}, refetch }) => {
                   throttledLike({
                     action: true,
                     likers: post?.likers?.arrayValue?.values || [],
-                    likeCount: post.likeCount.stringValue,
+                    likeCount: +post.likeCount.stringValue + 1,
                   });
                 }}
               />

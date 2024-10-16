@@ -10,7 +10,7 @@ const CommentPublishers = ({
 }) => {
   const { t } = useTranslation();
 
-  const publisherList = commentPublishers.map((x) => (
+  const publisherList = [...new Set(commentPublishers)].map((x) => (
     <CommentPublisher key={x} publisher={x} />
   ));
 

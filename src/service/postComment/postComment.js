@@ -19,9 +19,6 @@ async function postComment({ postID, comment, latestCommentCount }) {
       likeCount: {
         stringValue: "0",
       },
-      dislikeCount: {
-        stringValue: "0",
-      },
       time: {
         stringValue: new Date().getTime() + "",
       },
