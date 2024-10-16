@@ -34,7 +34,13 @@ const ProfilePost = ({ postID, user, trueUser }) => {
     );
 
   return (
-    <div className="profile_post" onClick={() => navigate(`/post/${postID}`)}>
+    <div
+      className="profile_post"
+      onClick={(e) => {
+        e.stopPropagation();
+        navigate(`/post/${postID}`);
+      }}
+    >
       <div className="profile_post_name_area">
         <figure className="profile_post_avatar">
           {showImage ? (

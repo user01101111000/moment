@@ -22,6 +22,10 @@ const DeletePostWindow = ({ setShowDeleteWindow, postID, user }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      onClick={(e) => {
+        e.stopPropagation();
+        setShowDeleteWindow(false);
+      }}
       className="delete_post_window"
     >
       <motion.article

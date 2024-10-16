@@ -44,12 +44,14 @@
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   user-select: none;
+  cursor: pointer;
 }
 
 .comment_publisher_info p {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
   user-select: none;
+  cursor: pointer;
 }
 
 .comment_publisher_button {

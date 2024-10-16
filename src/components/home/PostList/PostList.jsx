@@ -1,6 +1,6 @@
+import "./PostList.css";
 import LoadingImageComponent from "../../ui/LoadingImageComponent/LoadingImageComponent";
 import Post from "../Post/Post";
-import "./PostList.css";
 
 const PostList = ({ posts = [], refProp, isFetchingNextPage }) => {
   const postList = posts.map((post, _) =>

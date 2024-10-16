@@ -20,12 +20,19 @@ const CommentPublishers = ({
       initial={{ opacity: 0.5 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      onClick={(e) => {
+        e.stopPropagation();
+        setShowCommentPublishers(false);
+      }}
     >
       <motion.section
         className="comment_publishers_box"
         initial={{ opacity: 0.5, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0 }}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
         <div className="comment_publishers_header">
           <h1 className="comment_publishers_title">{t(label)}</h1>

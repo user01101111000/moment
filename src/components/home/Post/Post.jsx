@@ -85,10 +85,20 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
   if (isLoading) return <OnePostLoading hr />;
 
   return (
-    <div className="post">
+    <div
+      className="post"
+      onClick={
+        !isDetail &&
+        ((e) => {
+          e.stopPropagation();
+          navigate(`/post/${post.id.stringValue}`);
+        })
+      }
+    >
       <figure
         className="avatar"
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation();
           navigate(`/@${user.username.stringValue}`);
         }}
       >
@@ -106,7 +116,8 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
         <div className="name_area">
           <h3
             className="username"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               navigate(`/@${user.username.stringValue}`);
             }}
           >
@@ -117,23 +128,19 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
             <MdVerified className="verified_post" />
           )}
           <p className="name_divider">|</p>
-          <p className="post_time">
+          <p className="post_time" onClick={(e) => e.stopPropagation()}>
             {translateTime(timeConverter(+post.time.stringValue), t).join(" ")}
           </p>
         </div>
-        <p
-          className="post_content"
-          onClick={() => navigate(`/post/${post.id.stringValue}`)}
-        >
-          {post.content.stringValue}
-        </p>
+        <p className="post_content">{post.content.stringValue}</p>
 
         <div className="post_buttons">
           <div className="likes">
             {liked ? (
               <AiFillLike
                 className="post_button_icon"
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   setLiked((prev) => !prev);
                   setLikeCount((prev) => prev - 1);
                   throttledLike({
@@ -146,7 +153,8 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
             ) : (
               <AiOutlineLike
                 className="post_button_icon"
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   setLiked((prev) => !prev);
                   setLikeCount((prev) => prev + 1);
                   throttledLike({

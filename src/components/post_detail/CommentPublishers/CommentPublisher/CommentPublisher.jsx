@@ -33,7 +33,13 @@ const CommentPublisher = ({ publisher }) => {
 
   return (
     <div className="comment_publisher">
-      <div className="comment_publisher_main">
+      <div
+        className="comment_publisher_main"
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate(`/@${user.username.stringValue}`);
+        }}
+      >
         <figure className="comment_publisher_avatar">
           <img src={user.avatar.stringValue} alt={user.username.stringValue} />
         </figure>
@@ -52,7 +58,10 @@ const CommentPublisher = ({ publisher }) => {
 
       <div className="comment_publisher_footer">
         <button
-          onClick={() => navigate(`/@${user.username.stringValue}`)}
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`/@${user.username.stringValue}`);
+          }}
           className="comment_publisher_button"
         >
           {t("post.showProfile")}
