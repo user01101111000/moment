@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/common/useAuth";
 import { encryptToken } from "../../utils/cryptoID";
 
-const useLoginMutation = () => {
+const useLoginMutation = (resetForm) => {
   const navigate = useNavigate();
   const { login: loginContext } = useAuth();
 
@@ -22,6 +22,8 @@ const useLoginMutation = () => {
       localStorage.setItem("m_i&r", JSON.stringify(tokens));
 
       loginContext(tokens);
+
+      resetForm();
       navigate("/");
     },
   });

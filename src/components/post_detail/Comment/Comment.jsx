@@ -5,7 +5,6 @@ import timeConverter from "@/utils/timeConverter";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useGetAnyUserInfoQuery from "../../../hooks/api/useGetAnyUserInfoQuery";
-import Skeleton from "../../ui/Skeleton/Skeleton";
 import { useTranslation } from "react-i18next";
 import translateTime from "@/utils/translateTime";
 import { MdVerified } from "react-icons/md";
@@ -108,7 +107,7 @@ const Comment = ({ comment }) => {
         </div>
         <p className="post_content">{comment.content.stringValue}</p>
 
-        <div className="post_buttons">
+        <div className="mainButtons">
           <div className="likes">
             {liked ? (
               <AiFillLike

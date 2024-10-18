@@ -13,7 +13,6 @@ import LanguageSelect from "../../settings/LanguageSelect/LanguageSelect";
 
 const Login = ({ setShowLogin }) => {
   const { t } = useTranslation();
-  const { mutateAsync } = useLoginMutation();
 
   const {
     values,
@@ -32,13 +31,13 @@ const Login = ({ setShowLogin }) => {
     onSubmit,
     validationSchema: loginSchema,
   });
-
+  
+  const { mutateAsync } = useLoginMutation(resetForm);
   const [showPassword, setShowPassword] = useState(false);
 
   async function onSubmit(values) {
     try {
       await mutateAsync(values);
-      resetForm();
     } catch (e) {
       toast.error(t("login.notFoundAccount"), {
         position: "top-right",
