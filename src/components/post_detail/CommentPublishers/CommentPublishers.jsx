@@ -38,7 +38,7 @@ const CommentPublishers = ({
           <h1 className="comment_publishers_title">{t(label)}</h1>
           <h1 onClick={() => setShowCommentPublishers(false)}>x</h1>
         </div>
-        {publisherList}
+        <div className="comment_publishers_list">{publisherList}</div>
       </motion.section>
     </motion.section>
   );

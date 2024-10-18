@@ -4,8 +4,13 @@
   font-family: "Geist", sans-serif;
   color: white;
 }
+
 ::-webkit-scrollbar {
   display: none;
+}
+
+* {
+  scrollbar-width: none;
 }
 
 .Toastify__toast-body {

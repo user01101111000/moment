@@ -47,3 +47,11 @@
   user-select: none;
   cursor: pointer;
 }
+
+.comment_publishers_list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-height: 35rem;
+  overflow-y: scroll;
+}
