@@ -5,10 +5,8 @@ import "../../containers/home/HomeConatiner.css";
 import { motion } from "framer-motion";
 import OnePostLoading from "../../components/ui/OnePostLoading/OnePostLoading";
 
-const HomeLoading = () => {
-  const posts = Array.from({ length: 8 }, (_, i) => (
-    <OnePostLoading key={i} hr />
-  ));
+const HomeLoading = ({ length = 8 }) => {
+  const posts = Array.from({ length }, (_, i) => <OnePostLoading key={i} hr />);
 
   return (
     <motion.article

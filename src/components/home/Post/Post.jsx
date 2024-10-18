@@ -37,6 +37,11 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
   const [likeCount, setLikeCount] = useState(+post.likeCount.stringValue);
 
   useEffect(() => {
+    setLikeCount(+post.likeCount.stringValue);
+    setLiked(likeSituation);
+  }, [+post.likeCount.stringValue, likeSituation]);
+
+  useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setShowShareMenu(false);
@@ -199,7 +204,8 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
               >
                 <div
                   className="share_choice"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setShowShareMenu(false);
                     navigator.clipboard.writeText(
                       isDetail

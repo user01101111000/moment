@@ -47,6 +47,8 @@
 .profile_post_avatar img {
   width: 100%;
   height: 100%;
+
+  object-fit: cover;
 }
 .profile_post_name {
   display: flex;

@@ -4,7 +4,7 @@ import { registerSchema } from "../../../utils/schema";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Loading from "../../ui/Loading";
+import LoadingImageComponent from "../../ui/LoadingImageComponent/LoadingImageComponent";
 import { toast, Bounce } from "react-toastify";
 import useRegisterMutation from "../../../hooks/api/useRegisterMutation";
 import { useTranslation } from "react-i18next";
@@ -205,7 +205,7 @@ const Register = ({ setShowLogin }) => {
           disabled={isSubmitting}
         >
           {isSubmitting ? (
-            <Loading size={"1rem"} />
+            <LoadingImageComponent size={"1rem"} />
           ) : (
             t("register.registerButton")
           )}

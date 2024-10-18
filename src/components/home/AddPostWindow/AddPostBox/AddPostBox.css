@@ -38,10 +38,11 @@
 .post_input_box textarea {
   background-color: #181818;
   border: 0.5px solid rgba(255, 255, 255, 0.1);
-  padding: 0.5rem;
+  padding: 0.8rem;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.9);
   border-radius: 5px;
+  line-height: 1.5;
 }
 
 .post_input_box input:focus,

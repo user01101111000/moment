@@ -1,6 +1,6 @@
 import "./Login.css";
 import { useFormik } from "formik";
-import Loading from "../../ui/Loading";
+import LoadingImageComponent from "../../ui/LoadingImageComponent/LoadingImageComponent";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
@@ -121,7 +121,11 @@ const Login = ({ setShowLogin }) => {
           className={isSubmitting ? "submitting" : ""}
           disabled={isSubmitting}
         >
-          {isSubmitting ? <Loading size={"1rem"} /> : t("login.loginButton")}
+          {isSubmitting ? (
+            <LoadingImageComponent size={"1rem"} />
+          ) : (
+            t("login.loginButton")
+          )}
         </button>
 
         <h1 className="register_link_text" onClick={() => setShowLogin(false)}>

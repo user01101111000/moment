@@ -15,14 +15,16 @@ import { FaLink } from "react-icons/fa";
 import { throttle } from "lodash";
 import useAddCommentLikeMutation from "../../../hooks/api/useAddCommentLikeMutation";
 import OnePostLoading from "../../ui/OnePostLoading/OnePostLoading";
+import { useSelector } from "react-redux";
 
 const Comment = ({ comment }) => {
+  const { userInfo } = useSelector((state) => state.userInfo);
   const menuRef = useRef(null);
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   const likeSituation = comment?.likers?.arrayValue?.values?.some(
-    (x) => x.stringValue == comment.publisher.stringValue
+    (x) => x.stringValue == userInfo.id
   );
 
   const [likeCount, setLikeCount] = useState(comment.likeCount.stringValue);

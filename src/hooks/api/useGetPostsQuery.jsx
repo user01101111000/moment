@@ -5,6 +5,7 @@ const useGetInifiedPostsQuery = () => {
   return useInfiniteQuery({
     queryKey: ["posts"],
     queryFn: getPosts,
+    refetchIntervalInBackground: true,
     getNextPageParam: (lastPage) => {
       return lastPage?.nextPageToken;
     },

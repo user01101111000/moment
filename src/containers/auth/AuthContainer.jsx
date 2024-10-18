@@ -1,3 +1,4 @@
+import "./AuthContainer.css";
 import Login from "../../components/auth/Login/Login";
 import Register from "../../components/auth/Register/Register";
 import { useState } from "react";
