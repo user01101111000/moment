@@ -10,6 +10,7 @@ const AddPostBox = ({
   callback = async () => {},
   content,
   buttonName,
+  currentText = "",
 }) => {
   const { t } = useTranslation();
 
@@ -22,7 +23,7 @@ const AddPostBox = ({
     isSubmitting,
   } = useFormik({
     initialValues: {
-      content: "",
+      content: currentText,
     },
     onSubmit,
     validationSchema: postSchema,
@@ -41,6 +42,7 @@ const AddPostBox = ({
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0 }}
       className="add_post_box"
+      onClick={(e) => e.stopPropagation()}
     >
       <form className="add_post_form" onSubmit={handleSubmit}>
         <div className="post_input_box">
@@ -73,7 +75,10 @@ const AddPostBox = ({
 
           {!isSubmitting && (
             <button
-              onClick={() => setAdd(false)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setAdd(false);
+              }}
               type="button"
               className="cancel_button_add_post"
             >

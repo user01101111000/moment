@@ -32,13 +32,26 @@
   gap: 0.8rem;
 }
 
-.post_buttons {
+.mainButtons {
   display: flex;
   gap: 1.2rem;
-  width: 100%;
   justify-content: start;
   align-items: center;
 }
+
+.post_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.editedt_label {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .post_button_icon {
   cursor: pointer;
   font-size: 1.2rem;
@@ -145,4 +158,13 @@
   width: 100%;
   height: 0.2px;
   border-color: rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (max-width: 200px) {
+  .post_buttons {
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 1rem;
+  }
 }

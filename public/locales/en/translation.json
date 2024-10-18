@@ -65,7 +65,9 @@
   "postShareBox": {
     "post": "Post",
     "content": "Content",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "editButton": "Save"
   },
   "commentShareBox": {
     "comment": "Comment",

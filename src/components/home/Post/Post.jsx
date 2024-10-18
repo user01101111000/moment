@@ -137,86 +137,92 @@ const Post = ({ post = {}, isDetail = false, setAdd = () => {} }) => {
         <p className="post_content">{post.content.stringValue}</p>
 
         <div className="post_buttons">
-          <div className="likes">
-            {liked ? (
-              <AiFillLike
-                className="post_button_icon"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLiked((prev) => !prev);
-                  setLikeCount((prev) => prev - 1);
-                  throttledLike({
-                    action: false,
-                    likers: post?.likers?.arrayValue?.values || [],
-                    likeCount: +post.likeCount.stringValue - 1,
-                  });
-                }}
-              />
-            ) : (
-              <AiOutlineLike
-                className="post_button_icon"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLiked((prev) => !prev);
-                  setLikeCount((prev) => prev + 1);
-                  throttledLike({
-                    action: true,
-                    likers: post?.likers?.arrayValue?.values || [],
-                    likeCount: +post.likeCount.stringValue + 1,
-                  });
-                }}
-              />
-            )}
-
-            <p className="likes_count">{likeCount}</p>
-          </div>
-
-          <div className="comments">
-            <FaRegComment
-              className="post_button_icon"
-              onClick={
-                isDetail
-                  ? () => setAdd(true)
-                  : () => navigate(`/post/${post.id.stringValue}`)
-              }
-            />
-            <p className="comments_count">{post.commentCount.stringValue}</p>
-          </div>
-
-          <div className="share_label" ref={ref}>
-            <PiTelegramLogo
-              className="post_button_icon"
-              onClick={(e) => {
-                e.stopPropagation();
-                setShowShareMenu((prev) => !prev);
-              }}
-            />
-
-            {showShareMenu && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="share_menu"
-                ref={menuRef}
-              >
-                <div
-                  className="share_choice"
+          <div className="mainButtons">
+            <div className="likes">
+              {liked ? (
+                <AiFillLike
+                  className="post_button_icon"
                   onClick={(e) => {
                     e.stopPropagation();
-                    setShowShareMenu(false);
-                    navigator.clipboard.writeText(
-                      isDetail
-                        ? `${window.location.href}`
-                        : `${window.location.href}post/${post.id.stringValue}`
-                    );
+                    setLiked((prev) => !prev);
+                    setLikeCount((prev) => prev - 1);
+                    throttledLike({
+                      action: false,
+                      likers: post?.likers?.arrayValue?.values || [],
+                      likeCount: +post.likeCount.stringValue - 1,
+                    });
                   }}
+                />
+              ) : (
+                <AiOutlineLike
+                  className="post_button_icon"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLiked((prev) => !prev);
+                    setLikeCount((prev) => prev + 1);
+                    throttledLike({
+                      action: true,
+                      likers: post?.likers?.arrayValue?.values || [],
+                      likeCount: +post.likeCount.stringValue + 1,
+                    });
+                  }}
+                />
+              )}
+
+              <p className="likes_count">{likeCount}</p>
+            </div>
+
+            <div className="comments">
+              <FaRegComment
+                className="post_button_icon"
+                onClick={
+                  isDetail
+                    ? () => setAdd(true)
+                    : () => navigate(`/post/${post.id.stringValue}`)
+                }
+              />
+              <p className="comments_count">{post.commentCount.stringValue}</p>
+            </div>
+
+            <div className="share_label" ref={ref}>
+              <PiTelegramLogo
+                className="post_button_icon"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowShareMenu((prev) => !prev);
+                }}
+              />
+
+              {showShareMenu && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="share_menu"
+                  ref={menuRef}
                 >
-                  <h1>{t("post.copyLink")}</h1>
-                  <FaLink className="post_button_icon" />
-                </div>
-              </motion.div>
-            )}
+                  <div
+                    className="share_choice"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowShareMenu(false);
+                      navigator.clipboard.writeText(
+                        isDetail
+                          ? `${window.location.href}`
+                          : `${window.location.href}post/${post.id.stringValue}`
+                      );
+                    }}
+                  >
+                    <h1>{t("post.copyLink")}</h1>
+                    <FaLink className="post_button_icon" />
+                  </div>
+                </motion.div>
+              )}
+            </div>
           </div>
+
+          <h1 className="editedt_label" onClick={(e) => e.stopPropagation()}>
+            {post?.edited?.stringValue ?? ""}
+          </h1>
         </div>
       </div>
     </div>

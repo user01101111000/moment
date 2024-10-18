@@ -65,7 +65,9 @@
   "postShareBox": {
     "post": "Paylaş",
     "content": "Mətn",
-    "cancel": "Ləğv et"
+    "cancel": "Ləğv et",
+    "edit": "Redaktə et",
+    "editButton": "Yadda saxla"
   },
   "commentShareBox": {
     "comment": "Rəy",
