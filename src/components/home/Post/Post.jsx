@@ -19,7 +19,7 @@ import { MdVerified } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 import OnePostLoading from "../../ui/OnePostLoading/OnePostLoading";
 
-const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
+const Post = ({ post = {}, isDetail = false, setAdd = () => {} }) => {
   const menuRef = useRef(null);
   const { t } = useTranslation();
   const [showImage, setShowImage] = useState(false);
@@ -92,13 +92,10 @@ const Post = ({ post, isDetail = false, setAdd = () => {} }) => {
   return (
     <div
       className="post"
-      onClick={
-        !isDetail &&
-        ((e) => {
-          e.stopPropagation();
-          navigate(`/post/${post.id.stringValue}`);
-        })
-      }
+      onClick={(e) => {
+        e.stopPropagation();
+        !isDetail && navigate(`/post/${post.id.stringValue}`);
+      }}
     >
       <figure
         className="avatar"

@@ -38,7 +38,8 @@
     "delete2C": "This action cannot be undone.",
     "cancel": "Cancel",
     "confirm": "Confirm",
-    "posts": "Posts"
+    "posts": "Posts",
+    "noPost": "No posts yet"
   },
   "time": {
     "lessThanAMinuteAgo": "less than a minute ago",

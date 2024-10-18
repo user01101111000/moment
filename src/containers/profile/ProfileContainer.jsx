@@ -86,7 +86,7 @@ const ProfileContainer = ({ user, trueUser }) => {
           <ProfilePosts posts={user?.posts} user={user} trueUser={trueUser} />
         </div>
       ) : (
-        <h1 className="profile_container_no_posts">No posts yet.</h1>
+        <h1 className="profile_container_no_posts">{t("profile.noPost")}</h1>
       )}
       <AnimatePresence>
         {showEditProfile && (

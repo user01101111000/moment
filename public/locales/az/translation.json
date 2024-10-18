@@ -38,7 +38,8 @@
     "delete2C": "Bu əməliyyat geri qaytarıla bilməz.",
     "cancel": "Ləğv et",
     "confirm": "Təsdiqlə",
-    "posts": "Paylaşımlar"
+    "posts": "Paylaşımlar",
+    "noPost": "Hələki paylaşım yoxdur"
   },
   "time": {
     "lessThanAMinuteAgo": "indicə",
